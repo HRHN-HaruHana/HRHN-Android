@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_default">20dp</dimen>
+    <dimen name="space_large">40dp</dimen>
+    <dimen name="space_text">5dp</dimen>
+    <dimen name="radius_default">16dp</dimen>
+    <dimen name="radius_button">50dp</dimen>
+    <dimen name="text_size_heading">25sp</dimen>
+    <dimen name="text_size_body1">18sp</dimen>
+    <dimen name="text_size_body2">16sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+</resources>
