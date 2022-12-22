@@ -10,4 +10,6 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <color name="challenge_label">@color/gray_4a</color>
 </resources>
