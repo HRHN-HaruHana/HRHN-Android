@@ -1,12 +1,42 @@
 package com.hrhn.presentation.ui.screen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import com.hrhn.R
+import com.hrhn.databinding.ActivityMainBinding
+import com.hrhn.presentation.ui.screen.main.past.PastChallengeFragment
+import com.hrhn.presentation.ui.screen.main.today.TodayFragment
 
 class MainActivity : AppCompatActivity() {
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val todayFragment by lazy { TodayFragment() }
+    private val pastChallengeFragment by lazy { PastChallengeFragment() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit { add(R.id.fcv_main, todayFragment) }
+        }
+        initViews()
+    }
+
+    private fun initViews() {
+        binding.navBottom.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_today -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fcv_main, todayFragment)
+                    }
+                }
+                R.id.menu_past_challenge -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fcv_main, pastChallengeFragment)
+                    }
+                }
+            }
+            true
+        }
     }
 }
