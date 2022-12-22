@@ -26,9 +26,6 @@ class PastChallengeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-    }
-
-    companion object {
-        const val TAG = "Past Challenge"
+        _binding = null
     }
 }

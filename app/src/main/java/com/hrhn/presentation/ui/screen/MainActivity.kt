@@ -2,24 +2,22 @@ package com.hrhn.presentation.ui.screen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityMainBinding
 import com.hrhn.presentation.ui.screen.main.past.PastChallengeFragment
 import com.hrhn.presentation.ui.screen.main.today.TodayFragment
-import com.hrhn.presentation.util.replace
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val todayFragment by lazy { TodayFragment() }
+    private val pastChallengeFragment by lazy { PastChallengeFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         if (savedInstanceState == null) {
-            supportFragmentManager.replace(
-                TodayFragment::class.java,
-                R.id.fcv_main,
-                TodayFragment.TAG
-            )
+            supportFragmentManager.commit { add(R.id.fcv_main, todayFragment) }
         }
         initViews()
     }
@@ -28,18 +26,14 @@ class MainActivity : AppCompatActivity() {
         binding.navBottom.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_today -> {
-                    supportFragmentManager.replace(
-                        TodayFragment::class.java,
-                        R.id.fcv_main,
-                        TodayFragment.TAG
-                    )
+                    supportFragmentManager.commit {
+                        replace(R.id.fcv_main, todayFragment)
+                    }
                 }
                 R.id.menu_past_challenge -> {
-                    supportFragmentManager.replace(
-                        PastChallengeFragment::class.java,
-                        R.id.fcv_main,
-                        PastChallengeFragment.TAG
-                    )
+                    supportFragmentManager.commit {
+                        replace(R.id.fcv_main, pastChallengeFragment)
+                    }
                 }
             }
             true

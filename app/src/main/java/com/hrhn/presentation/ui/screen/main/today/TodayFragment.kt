@@ -26,9 +26,6 @@ class TodayFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-    }
-
-    companion object {
-        const val TAG = "Today"
+        _binding = null
     }
 }
