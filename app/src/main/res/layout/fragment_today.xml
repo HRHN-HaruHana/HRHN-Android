@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="today"
+            type="java.time.LocalDateTime" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_text"
-            android:text="2022.12.18"
+            android:dateWithYear="@{today}"
             android:textAppearance="@style/CaptionText"
             app:layout_constraintEnd_toEndOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="@id/tv_title"

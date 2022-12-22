@@ -9,3 +9,8 @@ import java.time.format.DateTimeFormatter
 fun TextView.setDateString(date: LocalDateTime) {
     this.text = date.format(DateTimeFormatter.ofPattern("MM/dd"))
 }
+
+@BindingAdapter("android:dateWithYear")
+fun TextView.setDateWithYearString(date: LocalDateTime) {
+    this.text = date.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"))
+}

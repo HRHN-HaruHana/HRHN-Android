@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hrhn.databinding.FragmentTodayBinding
+import java.time.LocalDateTime
 
 class TodayFragment : Fragment() {
     private var _binding: FragmentTodayBinding? = null
@@ -22,6 +23,7 @@ class TodayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.today = LocalDateTime.now()
     }
 
     override fun onDestroyView() {
