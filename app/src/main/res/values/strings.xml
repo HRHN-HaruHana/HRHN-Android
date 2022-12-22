@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">HRHN</string>
+    <string name="app_name">하루하나</string>
+    <string name="menu_title_today">오늘의 챌린지</string>
+    <string name="menu_title_past_challenge">지난 챌린지</string>
 </resources>
