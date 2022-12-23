@@ -10,6 +10,4 @@ interface ChallengeRepository {
     fun getLastChallenge(): Result<Challenge?>
     fun updateChallenge(challenge: Challenge): Result<Unit>
     fun deleteChallenge(id: Long): Result<Unit>
-    fun getPastChallenges(): List<Challenge>
-    fun addChallenge(challenge: Challenge): Result<Long>
 }
