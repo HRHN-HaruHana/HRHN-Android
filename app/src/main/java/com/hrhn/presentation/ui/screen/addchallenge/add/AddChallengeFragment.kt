@@ -5,11 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
+import com.hrhn.R
 import com.hrhn.databinding.FragmentAddChallengeBinding
+import com.hrhn.presentation.ui.screen.addchallenge.DoneFragment
+import com.hrhn.presentation.util.observeEvent
+import com.hrhn.presentation.util.showToast
 
 class AddChallengeFragment : Fragment() {
     private var _binding: FragmentAddChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)
+    private val viewModel by viewModels<AddChallengeViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,6 +29,29 @@ class AddChallengeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
+        observeData()
+    }
+
+    private fun initViews() {
+        with(binding) {
+            lifecycleOwner = viewLifecycleOwner
+            vm = viewModel
+            etNewChallenge.requestFocus()
+        }
+    }
+
+    private fun observeData() {
+        with(viewModel) {
+            navigateEvent.observeEvent(viewLifecycleOwner) {
+                parentFragmentManager.commit {
+                    replace(R.id.fcv_add_challenge, DoneFragment())
+                }
+            }
+            message.observeEvent(viewLifecycleOwner) {
+                requireContext().showToast(it)
+            }
+        }
     }
 
     override fun onDestroyView() {
