@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityAddChanllengeBinding
-import com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeFragment
+import com.hrhn.presentation.ui.screen.addchallenge.check.CheckChallengeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddChallengeActivity : AppCompatActivity() {
     private val binding by lazy { ActivityAddChanllengeBinding.inflate(layoutInflater) }
 
@@ -19,7 +21,7 @@ class AddChallengeActivity : AppCompatActivity() {
         // TODO last 아이템이 평가가 안되어있는지 체크
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
-                add(R.id.fcv_add_challenge, AddChallengeFragment())
+                add(R.id.fcv_add_challenge, CheckChallengeFragment())
             }
         }
     }

@@ -7,19 +7,19 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hrhn.databinding.ItemCheckableEmojiBinding
-import com.hrhn.presentation.ui.screen.addchallenge.Emoji
+import com.hrhn.presentation.ui.screen.addchallenge.CheckableEmoji
 
 class CheckEmojiAdapter(
-    private val onCheckedChange: (Emoji) -> Unit
-) : ListAdapter<Emoji, CheckEmojiAdapter.ViewHolder>(diffUtil) {
+    private val onCheckedChange: (CheckableEmoji) -> Unit
+) : ListAdapter<CheckableEmoji, CheckEmojiAdapter.ViewHolder>(diffUtil) {
     class ViewHolder(
         private val binding: ItemCheckableEmojiBinding,
-        private val onCheckedChange: (Emoji) -> Unit
+        private val onCheckedChange: (CheckableEmoji) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(emoji: Emoji) {
-            binding.emoji = emoji
-            binding.ivEmoji.setBackgroundColor(Color.parseColor(emoji.color))
-            binding.root.setOnClickListener { onCheckedChange(emoji) }
+        fun bind(item: CheckableEmoji) {
+            binding.info = item
+            binding.ivEmoji.setBackgroundColor(Color.parseColor(item.emoji.color))
+            binding.root.setOnClickListener { onCheckedChange(item) }
         }
     }
 
@@ -39,12 +39,16 @@ class CheckEmojiAdapter(
     }
 
     companion object {
-        val diffUtil = object : ItemCallback<Emoji>() {
-            override fun areItemsTheSame(oldItem: Emoji, newItem: Emoji): Boolean {
-                return oldItem.label == newItem.label
+        val diffUtil = object : ItemCallback<CheckableEmoji>() {
+            override fun areItemsTheSame(
+                oldItem: CheckableEmoji, newItem: CheckableEmoji
+            ): Boolean {
+                return oldItem.emoji.label == newItem.emoji.label
             }
 
-            override fun areContentsTheSame(oldItem: Emoji, newItem: Emoji): Boolean {
+            override fun areContentsTheSame(
+                oldItem: CheckableEmoji, newItem: CheckableEmoji
+            ): Boolean {
                 return oldItem.isChecked == newItem.isChecked
             }
         }

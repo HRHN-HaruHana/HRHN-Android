@@ -5,13 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.hrhn.databinding.FragmentTodayBinding
 import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
+import com.hrhn.presentation.util.observeEvent
+import com.hrhn.presentation.util.showToast
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDateTime
 
+@AndroidEntryPoint
 class TodayFragment : Fragment() {
     private var _binding: FragmentTodayBinding? = null
     private val binding get() = requireNotNull(_binding)
+    private val viewModel by viewModels<TodayViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,9 +30,26 @@ class TodayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.today = LocalDateTime.now()
-        binding.btnAddChallenge.setOnClickListener {
-            startActivity(AddChallengeActivity.newIntent(requireContext()))
+        initViews()
+        observeData()
+    }
+
+    private fun initViews() {
+        with(binding) {
+            vm = viewModel
+            lifecycleOwner = viewLifecycleOwner
+            today = LocalDateTime.now()
+        }
+    }
+
+    private fun observeData() {
+        with(viewModel) {
+            addEvent.observeEvent(viewLifecycleOwner) {
+                startActivity(AddChallengeActivity.newIntent(requireContext()))
+            }
+            message.observeEvent(viewLifecycleOwner) {
+                requireContext().showToast(it)
+            }
         }
     }
 

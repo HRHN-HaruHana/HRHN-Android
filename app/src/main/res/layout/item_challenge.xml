@@ -32,7 +32,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="@{challenge.emoji}"
+            android:text="@{challenge.emoji.label}"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_body2"
             app:layout_constraintStart_toStartOf="parent"

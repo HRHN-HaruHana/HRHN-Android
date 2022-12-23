@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hrhn.databinding.FragmentCheckChallengeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CheckChallengeFragment : Fragment() {
     private var _binding: FragmentCheckChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)

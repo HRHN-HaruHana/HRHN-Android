@@ -12,7 +12,9 @@ import com.hrhn.databinding.FragmentAddChallengeBinding
 import com.hrhn.presentation.ui.screen.addchallenge.DoneFragment
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddChallengeFragment : Fragment() {
     private var _binding: FragmentAddChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)

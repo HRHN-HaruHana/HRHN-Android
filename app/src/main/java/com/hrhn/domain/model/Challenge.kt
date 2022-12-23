@@ -1,11 +1,10 @@
 package com.hrhn.domain.model
 
-import androidx.annotation.ColorRes
 import java.time.LocalDateTime
 
 data class Challenge(
+    val id: Long = 0,
     val date: LocalDateTime = LocalDateTime.now(),
     val content: String = "",
-    val emoji: String? = null,
-    @ColorRes val color: Int? = null
+    val emoji: Emoji? = null
 )

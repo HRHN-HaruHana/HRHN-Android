@@ -4,15 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.hrhn.data.repository.ChallengeRepositoryImpl
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class AddChallengeViewModel : ViewModel() {
-    private val repository: ChallengeRepository = ChallengeRepositoryImpl()
-
+@HiltViewModel
+class AddChallengeViewModel @Inject constructor(
+    private val repository: ChallengeRepository
+) : ViewModel() {
     private val _navigateEvent = MutableLiveData<Event<Unit>>()
     val navigateEvent: LiveData<Event<Unit>> get() = _navigateEvent
 
