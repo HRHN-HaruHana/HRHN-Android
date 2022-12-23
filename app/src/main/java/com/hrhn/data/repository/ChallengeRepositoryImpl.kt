@@ -1,10 +1,11 @@
 package com.hrhn.data.repository
 
-import com.hrhn.domain.model.Emoji
 import com.hrhn.domain.model.Challenge
+import com.hrhn.domain.model.Emoji
 import com.hrhn.domain.repository.ChallengeRepository
+import javax.inject.Inject
 
-class ChallengeRepositoryImpl : ChallengeRepository {
+class ChallengeRepositoryImpl @Inject constructor() : ChallengeRepository {
     override fun getPastChallenges(): List<Challenge> {
         return listOf(
             Challenge(content = "영단어 100개 외우기", emoji = Emoji.BLUE),
