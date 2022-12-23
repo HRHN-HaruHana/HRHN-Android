@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import com.hrhn.R
@@ -46,6 +47,7 @@ class AddChallengeFragment : Fragment() {
     private fun observeData() {
         with(viewModel) {
             navigateEvent.observeEvent(viewLifecycleOwner) {
+                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 parentFragmentManager.commit {
                     replace(R.id.fcv_add_challenge, DoneFragment())
                 }
