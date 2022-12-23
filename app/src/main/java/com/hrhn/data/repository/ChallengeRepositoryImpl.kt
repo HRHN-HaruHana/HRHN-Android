@@ -26,7 +26,7 @@ class ChallengeRepositoryImpl @Inject constructor(
     }
 
     override fun getLastChallenge(): Result<Challenge?> {
-        return runCatching { challengeDataSource.getChallenges()[0] }
+        return runCatching { challengeDataSource.getChallenges().getOrNull(0) }
     }
 
     override fun updateChallenge(challenge: Challenge): Result<Unit> {
