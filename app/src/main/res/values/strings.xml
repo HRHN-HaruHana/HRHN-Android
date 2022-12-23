@@ -5,4 +5,6 @@
     <string name="setting">설정</string>
     <string name="message_no_challenge">오늘의 챌린지가 아직 없어요</string>
     <string name="button_add_challenge">챌린지 추가</string>
+    <string name="title_check_last_challenge">오늘을 시작하기 전,\n저번 챌린지를 평가하세요</string>
+    <string name="button_next">다음</string>
 </resources>
