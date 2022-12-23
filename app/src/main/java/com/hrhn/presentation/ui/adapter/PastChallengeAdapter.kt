@@ -1,5 +1,6 @@
 package com.hrhn.presentation.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
@@ -14,7 +15,9 @@ class PastChallengeAdapter : ListAdapter<Challenge, PastChallengeAdapter.ViewHol
         fun bind(challenge: Challenge) {
             with(binding) {
                 this.challenge = challenge
-                ivEmoji.setBackgroundColor(itemView.context.getColor(challenge.color!!))
+                challenge.emoji?.let {
+                    ivEmoji.setBackgroundColor(Color.parseColor(it.color))
+                }
             }
         }
     }

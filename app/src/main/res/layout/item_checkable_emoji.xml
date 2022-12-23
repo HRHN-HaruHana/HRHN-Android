@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="emoji"
-            type="com.hrhn.presentation.ui.screen.addchallenge.Emoji" />
+            name="info"
+            type="com.hrhn.presentation.ui.screen.addchallenge.CheckableEmoji" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="@{emoji.label}"
+            android:text="@{info.emoji.label}"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_emoji_label_large"
             app:layout_constraintDimensionRatio="W,1:1"
@@ -40,7 +40,7 @@
             android:layout_height="0dp"
             android:background="@color/checked"
             android:src="@drawable/ic_check_24"
-            android:visibleIf="@{emoji.checked}"
+            android:visibleIf="@{info.checked}"
             app:contentPadding="@dimen/space_default"
             app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintTop_toTopOf="parent"
