@@ -19,4 +19,8 @@ class ChallengeRepositoryImpl : ChallengeRepository {
             Challenge(content = "영단어 100개 외우기", emoji = ":D", color = R.color.blue_01)
         )
     }
+
+    override fun addChallenge(challenge: Challenge): Result<Long> {
+        return Result.success(1)
+    }
 }
