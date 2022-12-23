@@ -17,7 +17,8 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.screen.addchallenge.AddChallengeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.ui.screen.MainActivity"
             android:exported="true">
