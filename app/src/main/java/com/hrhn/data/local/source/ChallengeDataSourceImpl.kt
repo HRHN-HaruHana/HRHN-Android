@@ -4,6 +4,7 @@ import com.hrhn.data.local.dao.ChallengeDao
 import com.hrhn.data.mapper.toEntity
 import com.hrhn.data.mapper.toModel
 import com.hrhn.domain.model.Challenge
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 class ChallengeDataSourceImpl @Inject constructor(
@@ -15,6 +16,10 @@ class ChallengeDataSourceImpl @Inject constructor(
 
     override fun getChallenges(): List<Challenge> {
         return challengeDao.getChallenges().map { it.toModel() }
+    }
+
+    override fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): List<Challenge> {
+        return challengeDao.getChallengesWithPeriod(from, to).map { it.toModel() }
     }
 
     override fun updateChallenge(challenge: Challenge) {

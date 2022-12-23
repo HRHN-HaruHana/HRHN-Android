@@ -4,6 +4,12 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.hrhn.presentation.ui.screen.main.today.TodayViewModel" />
+
         <variable
             name="today"
             type="java.time.LocalDateTime" />
@@ -51,7 +57,7 @@
         <androidx.constraintlayout.widget.Group
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibleIf="@{vm.isEmpty()}"
             app:constraint_referenced_ids="tv_no_challenge, btn_add_challenge" />
 
         <TextView
@@ -71,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_text"
+            android:onClick="@{()->vm.addTodayChallenge()}"
             android:text="@string/button_add_challenge"
             android:textAppearance="@style/CaptionText"
             app:cornerRadius="@dimen/radius_button"
@@ -83,10 +90,11 @@
             android:id="@+id/tv_today_challenge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="영단어 100개 외우기"
+            android:padding="@dimen/space_default"
+            android:text="@{vm.todayChallenge.content}"
             android:textAppearance="@style/HeaderText"
             android:textColor="@color/challenge_label"
-            android:visibility="gone"
+            android:visibleIf="@{!vm.isEmpty()}"
             app:layout_constraintBottom_toBottomOf="@id/view_background"
             app:layout_constraintEnd_toEndOf="@id/view_background"
             app:layout_constraintStart_toStartOf="@id/view_background"
