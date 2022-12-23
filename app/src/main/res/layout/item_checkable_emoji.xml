@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="emoji"
+            type="com.hrhn.presentation.ui.screen.addchallenge.Emoji" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_text">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_emoji"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.HRHN.MediumComponent"
+            tools:background="@color/red_02" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@{emoji.label}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_emoji_label_large"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text=":D" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/checked"
+            android:src="@drawable/ic_check_24"
+            android:visibleIf="@{emoji.checked}"
+            app:contentPadding="@dimen/space_default"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.HRHN.MediumComponent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
