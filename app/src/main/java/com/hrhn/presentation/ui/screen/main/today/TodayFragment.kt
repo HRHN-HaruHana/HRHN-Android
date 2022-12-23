@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hrhn.databinding.FragmentTodayBinding
 import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDateTime
 
+@AndroidEntryPoint
 class TodayFragment : Fragment() {
     private var _binding: FragmentTodayBinding? = null
     private val binding get() = requireNotNull(_binding)

@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hrhn.databinding.FragmentPastChallengeBinding
 import com.hrhn.presentation.ui.adapter.PastChallengeAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PastChallengeFragment : Fragment() {
     private var _binding: FragmentPastChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)

@@ -7,7 +7,9 @@ import com.hrhn.R
 import com.hrhn.databinding.ActivityMainBinding
 import com.hrhn.presentation.ui.screen.main.past.PastChallengeFragment
 import com.hrhn.presentation.ui.screen.main.today.TodayFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val todayFragment by lazy { TodayFragment() }

@@ -4,9 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hrhn.domain.model.Emoji
+import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.ui.screen.addchallenge.CheckableEmoji
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CheckChallengeViewModel : ViewModel() {
+@HiltViewModel
+class CheckChallengeViewModel @Inject constructor(
+    private val repository: ChallengeRepository
+) : ViewModel() {
     private val _selected = MutableLiveData<Emoji?>()
     val selected: LiveData<Emoji?> get() = _selected
 
