@@ -1,10 +1,6 @@
 package com.hrhn.presentation.ui.screen.main.past
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
@@ -27,7 +23,7 @@ class PastChallengeViewModel @Inject constructor(
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> get() = _message
 
-    init {
+    fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getChallenges()
                 .onSuccess { list ->

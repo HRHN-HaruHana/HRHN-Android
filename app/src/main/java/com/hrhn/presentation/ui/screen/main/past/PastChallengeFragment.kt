@@ -34,6 +34,11 @@ class PastChallengeFragment : Fragment() {
         observeData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchData()
+    }
+
     private fun initViews() {
         binding.rvPastChallenge.adapter = adapter
     }

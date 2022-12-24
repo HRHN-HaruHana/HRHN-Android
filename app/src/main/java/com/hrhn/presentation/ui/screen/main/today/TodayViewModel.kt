@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TodayViewModel @Inject constructor(
-    repository: ChallengeRepository
+    private val repository: ChallengeRepository
 ) : ViewModel() {
     private val _isEmpty = MutableLiveData<Boolean>(true)
     val isEmpty: LiveData<Boolean> get() = _isEmpty
@@ -30,7 +30,7 @@ class TodayViewModel @Inject constructor(
     private val _addEvent = MutableLiveData<Event<Unit>>()
     val addEvent: LiveData<Event<Unit>> get() = _addEvent
 
-    init {
+    fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getChallengesWithPeriod(
                 LocalDate.now().atStartOfDay(),

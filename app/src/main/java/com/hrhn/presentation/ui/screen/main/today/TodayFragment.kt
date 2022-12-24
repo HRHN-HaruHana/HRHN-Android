@@ -34,6 +34,11 @@ class TodayFragment : Fragment() {
         observeData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchData()
+    }
+
     private fun initViews() {
         with(binding) {
             vm = viewModel
