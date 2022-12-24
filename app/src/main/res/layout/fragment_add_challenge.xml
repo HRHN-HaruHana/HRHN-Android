@@ -35,7 +35,7 @@
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
             android:padding="@dimen/space_large"
-            android:text="@={vm.content}"
+            android:text="@={vm.input}"
             android:textColor="@color/gray_4a"
             android:textSize="20sp"
             android:textStyle="bold"

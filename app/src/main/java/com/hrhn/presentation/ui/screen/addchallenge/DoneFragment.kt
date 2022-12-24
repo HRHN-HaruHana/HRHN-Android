@@ -22,6 +22,9 @@ class DoneFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnNext.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 
     override fun onDestroyView() {

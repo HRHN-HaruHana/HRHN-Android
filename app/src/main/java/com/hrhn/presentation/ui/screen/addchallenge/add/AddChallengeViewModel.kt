@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,19 +24,20 @@ class AddChallengeViewModel @Inject constructor(
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> get() = _message
 
-    val content = MutableLiveData<String>()
-    val nextEnabled: LiveData<Boolean> = Transformations.map(content) {
+    val input = MutableLiveData<String>()
+    val nextEnabled: LiveData<Boolean> = Transformations.map(input) {
         it.length in 10 until 100
     }
 
     fun saveNewChallenge() {
-        content.value?.let {
-            repository.addChallenge(Challenge(content = it))
+        val content = requireNotNull(input.value)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertChallenge(Challenge(content = content))
                 .onSuccess {
                     _navigateEvent.emit()
                 }
                 .onFailure { t ->
-                    _message.emit(t.message ?: "저장 실패")
+                    t.message?.let { _message.emit(it) }
                 }
         }
     }
