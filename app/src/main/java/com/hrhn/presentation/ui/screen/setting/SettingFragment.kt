@@ -1,12 +1,18 @@
 package com.hrhn.presentation.ui.screen.setting
 
+import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.hrhn.R
 import com.hrhn.presentation.DailyAlarmReceiver
 import java.time.LocalDate
@@ -15,6 +21,20 @@ import java.time.ZoneId
 
 class SettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private val notificationOnOffKey by lazy { requireContext().getString(R.string.key_notification_on_off) }
+    private var hasNotificationPermission: Boolean = false
+    private val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            hasNotificationPermission = isGranted
+            if (!isGranted) {
+                resetOnOff()
+            }
+        }
+
+    private fun resetOnOff() {
+        findPreference<SwitchPreferenceCompat>(notificationOnOffKey)?.isChecked = false
+    }
 
     private val alarmManager by lazy {
         requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -31,6 +51,14 @@ class SettingFragment : PreferenceFragmentCompat(),
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
+        hasNotificationPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
     }
 
     override fun onResume() {
@@ -44,23 +72,28 @@ class SettingFragment : PreferenceFragmentCompat(),
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        val notificationOnOffKey = context?.getString(R.string.key_notification_on_off)
         val hourKey = context?.getString(R.string.key_notification_hour)
         val minuteKey = context?.getString(R.string.key_notification_minute)
 
         if (key == notificationOnOffKey) {
             with(sharedPreferences) {
                 if (getBoolean(notificationOnOffKey, false)) {
-                    val notificationTime = LocalDate.now().atTime(
-                        getInt(hourKey, 9),
-                        getInt(minuteKey, 0),
-                        0
-                    )
+                    if (hasNotificationPermission) {
+                        val notificationTime = LocalDate.now().atTime(
+                            getInt(hourKey, 9),
+                            getInt(minuteKey, 0),
+                            0
+                        )
 
-                    if (notificationTime.isBefore(LocalDateTime.now())) {
-                        setAlarm(notificationTime.plusDays(1))
+                        if (notificationTime.isBefore(LocalDateTime.now())) {
+                            setAlarm(notificationTime.plusDays(1))
+                        } else {
+                            setAlarm(notificationTime)
+                        }
                     } else {
-                        setAlarm(notificationTime)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        }
                     }
                 } else {
                     cancelAlarm()
