@@ -4,7 +4,6 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationCompat.PRIORITY_HIGH
 import com.hrhn.R
 
 class NotificationUtil(private val channelId: String) {
@@ -18,8 +17,8 @@ class NotificationUtil(private val channelId: String) {
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(title)
             .setContentText(content)
-            .setFullScreenIntent(pendingIntent, true)
-            .setPriority(PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
             .build()
     }
 }
