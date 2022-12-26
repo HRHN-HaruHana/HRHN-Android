@@ -3,7 +3,7 @@
     <string name="app_database_name">hrhn.db</string>
     <string name="notification_channel_id">하루하나</string>
     <string name="notification_channel_name">하루하나</string>
-    <string name="notification_title">오늘의 챌린지를 등록하세요</string>
+    <string name="notification_content">오늘의 챌린지를 등록하세요!</string>
     <string name="menu_title_today">오늘의 챌린지</string>
     <string name="menu_title_past_challenge">지난 챌린지</string>
     <string name="setting">설정</string>

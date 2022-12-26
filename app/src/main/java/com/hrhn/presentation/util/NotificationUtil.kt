@@ -1,0 +1,25 @@
+package com.hrhn.presentation.util
+
+import android.app.Notification
+import android.app.PendingIntent
+import android.content.Context
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationCompat.PRIORITY_HIGH
+import com.hrhn.R
+
+class NotificationUtil(private val channelId: String) {
+    fun createNotification(
+        context: Context,
+        title: String,
+        content: String,
+        pendingIntent: PendingIntent?
+    ): Notification {
+        return NotificationCompat.Builder(context, channelId)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle(title)
+            .setContentText(content)
+            .setFullScreenIntent(pendingIntent, true)
+            .setPriority(PRIORITY_HIGH)
+            .build()
+    }
+}
