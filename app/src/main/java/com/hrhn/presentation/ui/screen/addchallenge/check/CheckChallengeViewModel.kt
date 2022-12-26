@@ -13,6 +13,7 @@ import com.hrhn.presentation.util.emit
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,6 +23,9 @@ class CheckChallengeViewModel @Inject constructor(
     private val _needToUpdateLastChallengeEvent = MutableLiveData<Event<Boolean>>()
     val needToUpdateLastChallengeEvent: LiveData<Event<Boolean>>
         get() = _needToUpdateLastChallengeEvent
+
+    private val _finishEvent = MutableLiveData<Event<Unit>>()
+    val finishEvent: LiveData<Event<Unit>> get() = _finishEvent
 
     private val _navigateEvent = MutableLiveData<Event<Unit>>()
     val navigateEvent: LiveData<Event<Unit>> get() = _navigateEvent
@@ -44,7 +48,9 @@ class CheckChallengeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.getLastChallenge()
                 .onSuccess {
-                    if (it == null || it.emoji != null) {
+                    if (it != null && it.date.toLocalDate() == LocalDate.now()) {
+                        _finishEvent.emit()
+                    } else if (it == null || it.emoji != null) {
                         _needToUpdateLastChallengeEvent.emit(false)
                     } else {
                         _lastChallenge.postValue(it)

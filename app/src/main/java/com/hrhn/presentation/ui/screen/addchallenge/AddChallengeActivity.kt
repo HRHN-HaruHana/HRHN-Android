@@ -42,7 +42,10 @@ class AddChallengeActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.message.observeEvent(this) {
-            this.showToast(it)
+            showToast(it)
+        }
+        viewModel.finishEvent.observeEvent(this) {
+            finish()
         }
     }
 
