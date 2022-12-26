@@ -1,5 +1,6 @@
 package com.hrhn.presentation.ui.screen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
@@ -7,6 +8,7 @@ import com.hrhn.R
 import com.hrhn.databinding.ActivityMainBinding
 import com.hrhn.presentation.ui.screen.main.past.PastChallengeFragment
 import com.hrhn.presentation.ui.screen.main.today.TodayFragment
+import com.hrhn.presentation.ui.screen.setting.SettingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,6 +39,12 @@ class MainActivity : AppCompatActivity() {
                         replace(R.id.fcv_main, pastChallengeFragment)
                     }
                 }
+            }
+            true
+        }
+        binding.mtMain.setOnMenuItemClickListener {
+            if (it.itemId == R.id.menu_setting) {
+                startActivity(Intent(this, SettingActivity::class.java))
             }
             true
         }

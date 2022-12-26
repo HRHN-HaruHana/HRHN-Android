@@ -9,7 +9,15 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
+        <item name="colorAccent">@color/red_02</item>
+        <item name="preferenceTheme">@style/Theme.HRHN.Preferences</item>
     </style>
 
+    <style name="Theme.HRHN.Preferences" parent="PreferenceThemeOverlay">
+        <item name="preferenceCategoryTitleTextColor">@color/secondary_label</item>
+    </style>
+
+    <color name="challenge_card">@color/gray_fb</color>
     <color name="challenge_label">@color/gray_4a</color>
+    <color name="secondary_label">#993C3C43</color>
 </resources>
