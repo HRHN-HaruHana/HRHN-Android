@@ -26,4 +26,9 @@
     <string name="setting_support_title">문의 및 지원</string>
     <string name="setting_homepage_title">홈페이지</string>
     <string name="setting_opensource_license_title">오픈소스 라이선스</string>
+
+    <!-- pref key -->
+    <string name="key_notification_on_off">key_notification_on_off</string>
+    <string name="key_notification_hour">key_notification_hour</string>
+    <string name="key_notification_minute">key_notification_minute</string>
 </resources>

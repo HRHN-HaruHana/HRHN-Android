@@ -8,7 +8,7 @@
 
         <SwitchPreferenceCompat
             android:icon="@drawable/ic_notifications_24"
-            app:key="notifications"
+            app:key="@string/key_notification_on_off"
             app:summary="@string/setting_notification_summary"
             app:title="@string/setting_notification_title" />
 

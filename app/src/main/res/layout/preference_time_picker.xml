@@ -5,5 +5,4 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/space_text"
     android:backgroundTint="@color/gray_f6"
-    android:text="오전 9:00"
     android:textColor="@color/red_02" />
