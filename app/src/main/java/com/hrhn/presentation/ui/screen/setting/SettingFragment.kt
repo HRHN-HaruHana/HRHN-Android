@@ -56,7 +56,12 @@ class SettingFragment : PreferenceFragmentCompat(),
                         getInt(minuteKey, 0),
                         0
                     )
-                    setAlarm(notificationTime)
+
+                    if (notificationTime.isBefore(LocalDateTime.now())) {
+                        setAlarm(notificationTime.plusDays(1))
+                    } else {
+                        setAlarm(notificationTime)
+                    }
                 } else {
                     cancelAlarm()
                 }
@@ -68,7 +73,7 @@ class SettingFragment : PreferenceFragmentCompat(),
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             time.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(),
-            AlarmManager.INTERVAL_DAY,
+            1000 * 60,
             pendingIntent
         )
     }
