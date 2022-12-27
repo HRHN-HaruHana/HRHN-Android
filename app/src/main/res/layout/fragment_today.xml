@@ -91,9 +91,10 @@
 
         <TextView
             android:id="@+id/tv_today_challenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/space_default"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/space_large"
+            android:gravity="center"
             android:text="@{vm.todayChallenge.content}"
             android:textAppearance="@style/HeaderText"
             android:textColor="@color/challenge_label"
