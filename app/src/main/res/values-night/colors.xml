@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="label">@color/white</color>
     <color name="secondary_label">#99EBEBF5</color>
     <color name="tertiary_label">#4DEBEBF5</color>
     <color name="quaternary_label">#2E3C3C43</color>

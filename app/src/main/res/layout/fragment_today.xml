@@ -97,7 +97,7 @@
             android:gravity="center"
             android:text="@{vm.todayChallenge.content}"
             android:textAppearance="@style/HeaderText"
-            android:textColor="@color/challenge_label"
+            android:textColor="@color/gray_4a"
             android:visibleIf="@{!vm.isEmpty()}"
             app:layout_constraintBottom_toBottomOf="@id/view_background"
             app:layout_constraintEnd_toEndOf="@id/view_background"
