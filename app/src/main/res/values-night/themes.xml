@@ -17,7 +17,4 @@
         <item name="preferenceCategoryTitleTextColor">@color/secondary_label</item>
     </style>
 
-    <color name="challenge_card">@color/black</color>
-    <color name="challenge_label">@color/black</color>
-    <color name="secondary_label">#99EBEBF5</color>
 </resources>
