@@ -8,6 +8,7 @@ import com.hrhn.presentation.util.emit
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,7 +28,7 @@ class PastChallengeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.getChallenges()
                 .onSuccess { list ->
-                    _challenges.postValue(list.filter { it.emoji != null })
+                    _challenges.postValue(list.filter { it.date.toLocalDate() != LocalDate.now() })
                 }.onFailure { t ->
                     t.message?.let { _message.emit(it) }
                 }
