@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.adapter
+package com.hrhn.presentation.ui.screen.main.past.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
