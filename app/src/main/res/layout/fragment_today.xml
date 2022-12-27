@@ -37,6 +37,7 @@
             android:layout_marginTop="@dimen/space_text"
             android:dateWithYear="@{today}"
             android:textAppearance="@style/CaptionText"
+            android:textColor="@color/secondary_label"
             app:layout_constraintEnd_toEndOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
@@ -66,6 +67,7 @@
             android:layout_height="wrap_content"
             android:text="@string/message_no_challenge"
             android:textAppearance="@style/CaptionText"
+            android:textColor="@color/dim"
             app:layout_constraintBottom_toTopOf="@id/btn_add_challenge"
             app:layout_constraintEnd_toEndOf="@id/view_background"
             app:layout_constraintStart_toStartOf="@id/view_background"
@@ -80,6 +82,7 @@
             android:onClick="@{()->vm.addTodayChallenge()}"
             android:text="@string/button_add_challenge"
             android:textAppearance="@style/CaptionText"
+            android:textColor="@color/reverse_label"
             app:cornerRadius="@dimen/radius_button"
             app:layout_constraintBottom_toBottomOf="@id/view_background"
             app:layout_constraintEnd_toEndOf="@id/tv_no_challenge"
