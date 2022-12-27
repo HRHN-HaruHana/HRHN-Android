@@ -17,7 +17,4 @@
         <item name="preferenceCategoryTitleTextColor">@color/secondary_label</item>
     </style>
 
-    <color name="challenge_card">@color/gray_fb</color>
-    <color name="challenge_label">@color/gray_4a</color>
-    <color name="secondary_label">#993C3C43</color>
 </resources>

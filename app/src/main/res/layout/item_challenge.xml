@@ -46,6 +46,7 @@
             android:layout_marginTop="@dimen/space_text"
             android:date="@{challenge.date}"
             android:textAppearance="@style/CaptionText"
+            android:textColor="@color/label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_emoji_label"
             app:layout_constraintStart_toStartOf="@id/tv_emoji_label"

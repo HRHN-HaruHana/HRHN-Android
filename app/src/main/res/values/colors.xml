@@ -18,4 +18,21 @@
     <color name="skyblue_01">#FFB0D9FF</color>
     <color name="blue_01">#FF97B4FE</color>
     <color name="purple_01">#FFE1BAFF</color>
+
+    <color name="label">@color/black</color>
+    <color name="secondary_label">#993C3C43</color>
+    <color name="tertiary_label">#4D3C3C43</color>
+    <color name="quaternary_label">#2E3C3C43</color>
+
+    <color name="header_label">@color/black</color>
+    <color name="challenge_card_fill">@color/gray_fb</color>
+    <color name="challenge_card_label">@color/gray_4a</color>
+    <color name="challenge_list_fill">@color/gray_f6</color>
+    <color name="challenge_list_label">@color/gray_81</color>
+    <color name="challenge_label">@color/gray_4a</color>
+    <color name="disabled">@color/gray_d4</color>
+    <color name="dim">@color/gray_54</color>
+    <color name="background">@color/white</color>
+    <color name="setting_icon_fill">@color/gray_c5</color>
+    <color name="reverse_label">@color/white</color>
 </resources>
