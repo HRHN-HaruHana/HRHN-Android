@@ -40,7 +40,11 @@ class PastChallengeFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.rvPastChallenge.adapter = adapter
+        with(binding) {
+            vm = viewModel
+            lifecycleOwner = viewLifecycleOwner
+            rvPastChallenge.adapter = adapter
+        }
     }
 
     private fun observeData() {
