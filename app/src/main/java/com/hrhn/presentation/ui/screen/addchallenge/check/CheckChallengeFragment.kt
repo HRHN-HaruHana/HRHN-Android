@@ -52,7 +52,6 @@ class CheckChallengeFragment : Fragment() {
             navigateEvent.observeEvent(viewLifecycleOwner) {
                 parentFragmentManager.commit {
                     replace(R.id.fcv_add_challenge, AddChallengeFragment())
-                    addToBackStack(null)
                 }
             }
             message.observeEvent(viewLifecycleOwner) {
