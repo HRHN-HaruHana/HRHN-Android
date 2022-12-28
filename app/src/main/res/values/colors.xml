@@ -18,6 +18,7 @@
     <color name="skyblue_01">#FFB0D9FF</color>
     <color name="blue_01">#FF97B4FE</color>
     <color name="purple_01">#FFE1BAFF</color>
+    <color name="none">#FFCCCCCC</color>
 
     <color name="label">@color/black</color>
     <color name="secondary_label">#993C3C43</color>

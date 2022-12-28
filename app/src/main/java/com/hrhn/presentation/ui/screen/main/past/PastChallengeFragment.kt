@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hrhn.databinding.FragmentPastChallengeBinding
-import com.hrhn.presentation.ui.adapter.PastChallengeAdapter
+import com.hrhn.presentation.ui.screen.main.past.adapter.PastChallengeAdapter
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,11 @@ class PastChallengeFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.rvPastChallenge.adapter = adapter
+        with(binding) {
+            vm = viewModel
+            lifecycleOwner = viewLifecycleOwner
+            rvPastChallenge.adapter = adapter
+        }
     }
 
     private fun observeData() {

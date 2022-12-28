@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.adapter
+package com.hrhn.presentation.ui.screen.main.past.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hrhn.databinding.ItemChallengeBinding
 import com.hrhn.domain.model.Challenge
+import com.hrhn.presentation.util.Color.NONE
 
 class PastChallengeAdapter : ListAdapter<Challenge, PastChallengeAdapter.ViewHolder>(diffUtil) {
     class ViewHolder(private val binding: ItemChallengeBinding) :
@@ -15,9 +16,7 @@ class PastChallengeAdapter : ListAdapter<Challenge, PastChallengeAdapter.ViewHol
         fun bind(challenge: Challenge) {
             with(binding) {
                 this.challenge = challenge
-                challenge.emoji?.let {
-                    ivEmoji.setBackgroundColor(Color.parseColor(it.color))
-                }
+                ivEmoji.setBackgroundColor(Color.parseColor(challenge.emoji?.color ?: NONE))
             }
         }
     }

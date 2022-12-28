@@ -9,6 +9,7 @@
     <string name="setting">설정</string>
     <string name="message_no_challenge">오늘의 챌린지가 아직 없어요</string>
     <string name="button_add_challenge">챌린지 추가</string>
+    <string name="message_empty_challenges">아직 지난 챌린지가 없어요!</string>
     <string name="title_check_last_challenge">오늘을 시작하기 전,\n저번 챌린지를 평가하세요</string>
     <string name="button_next">다음</string>
     <string name="message_new_challenge">오늘의 챌린지를\n작성해주세요</string>
