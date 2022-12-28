@@ -5,7 +5,9 @@ import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import java.time.LocalDateTime
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ChallengeRepositoryImpl @Inject constructor(
     private val challengeDataSource: ChallengeDataSource
 ) : ChallengeRepository {
