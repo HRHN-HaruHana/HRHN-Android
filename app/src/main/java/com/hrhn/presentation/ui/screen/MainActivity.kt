@@ -11,7 +11,9 @@ import com.hrhn.presentation.ui.screen.main.past.PastChallengeFragment
 import com.hrhn.presentation.ui.screen.main.past.PastChallengeViewModel
 import com.hrhn.presentation.ui.screen.main.today.TodayFragment
 import com.hrhn.presentation.ui.screen.main.today.TodayViewModel
+import com.hrhn.presentation.ui.screen.onboarding.OnboardingActivity
 import com.hrhn.presentation.ui.screen.setting.SettingActivity
+import com.hrhn.presentation.util.SharedPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,12 +23,18 @@ class MainActivity : AppCompatActivity() {
     private val pastChallengeFragment by lazy { PastChallengeFragment() }
     private val todayViewModel by viewModels<TodayViewModel>()
     private val pastChallengeViewModel by viewModels<PastChallengeViewModel>()
+    private val sharedPreferenceManager by lazy { SharedPreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         if (savedInstanceState == null) {
-            supportFragmentManager.commit { add(R.id.fcv_main, todayFragment) }
+            if (!sharedPreferenceManager.isOnboardingAlreadyShown) {
+                startActivity(Intent(this, OnboardingActivity::class.java))
+                finish()
+            } else {
+                supportFragmentManager.commit { add(R.id.fcv_main, todayFragment) }
+            }
         }
         initViews()
     }

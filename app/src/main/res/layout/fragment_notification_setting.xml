@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,6 +9,50 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_notification_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/message_onboarding_notification"
+            android:textAppearance="@style/HeaderText"
+            app:layout_constraintBottom_toTopOf="@id/btn_time_picker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_time_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_text"
+            android:backgroundTint="@color/gray_f6"
+            android:textColor="@color/red_02"
+            app:layout_constraintBottom_toBottomOf="@id/btn_set_alarm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_notification_message" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_set_alarm"
+            style="@style/LargeButton.Rounded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_set_alarm"
+            app:layout_constraintBottom_toTopOf="@id/btn_no_alarm" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_no_alarm"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_default"
+            android:text="@string/button_no_alarm"
+            android:textColor="@color/gray_54"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
