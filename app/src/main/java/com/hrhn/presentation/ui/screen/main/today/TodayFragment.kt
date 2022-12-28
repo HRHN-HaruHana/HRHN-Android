@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.hrhn.databinding.FragmentTodayBinding
 import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
 import com.hrhn.presentation.util.observeEvent
@@ -17,7 +17,7 @@ import java.time.LocalDateTime
 class TodayFragment : Fragment() {
     private var _binding: FragmentTodayBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val viewModel by viewModels<TodayViewModel>()
+    private val viewModel by activityViewModels<TodayViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

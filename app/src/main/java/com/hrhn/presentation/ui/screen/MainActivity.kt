@@ -2,12 +2,15 @@ package com.hrhn.presentation.ui.screen
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityMainBinding
 import com.hrhn.presentation.ui.screen.main.past.PastChallengeFragment
+import com.hrhn.presentation.ui.screen.main.past.PastChallengeViewModel
 import com.hrhn.presentation.ui.screen.main.today.TodayFragment
+import com.hrhn.presentation.ui.screen.main.today.TodayViewModel
 import com.hrhn.presentation.ui.screen.setting.SettingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val todayFragment by lazy { TodayFragment() }
     private val pastChallengeFragment by lazy { PastChallengeFragment() }
+    private val todayViewModel by viewModels<TodayViewModel>()
+    private val pastChallengeViewModel by viewModels<PastChallengeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

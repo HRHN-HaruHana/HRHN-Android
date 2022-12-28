@@ -6,7 +6,9 @@ import com.hrhn.data.mapper.toModel
 import com.hrhn.domain.model.Challenge
 import java.time.LocalDateTime
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ChallengeDataSourceImpl @Inject constructor(
     private val challengeDao: ChallengeDao
 ) : ChallengeDataSource {

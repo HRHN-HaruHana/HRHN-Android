@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.hrhn.databinding.FragmentPastChallengeBinding
 import com.hrhn.presentation.ui.screen.main.past.adapter.PastChallengeAdapter
 import com.hrhn.presentation.util.observeEvent
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PastChallengeFragment : Fragment() {
     private var _binding: FragmentPastChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val viewModel by viewModels<PastChallengeViewModel>()
+    private val viewModel by activityViewModels<PastChallengeViewModel>()
     private val adapter by lazy { PastChallengeAdapter() }
 
     override fun onCreateView(
