@@ -24,7 +24,7 @@ class AddChallengeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.lifecycleOwner = this
-
+        initToolbar()
         if (savedInstanceState == null) {
             viewModel.needToUpdateLastChallengeEvent
                 .observeEvent(this) { navigateToCheck ->
@@ -38,6 +38,14 @@ class AddChallengeActivity : AppCompatActivity() {
                 }
         }
         observeData()
+    }
+
+    private fun initToolbar() {
+        setSupportActionBar(binding.tbAddChallenge)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
     }
 
     private fun observeData() {
