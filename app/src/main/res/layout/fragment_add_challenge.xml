@@ -46,15 +46,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
+            style="@style/LargeButton.FillMaxWidth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="@{vm.nextEnabled}"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
             android:onClick="@{() -> vm.saveNewChallenge()}"
-            android:paddingVertical="@dimen/space_default"
             android:text="@string/button_next"
-            app:cornerRadius="0dp"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
