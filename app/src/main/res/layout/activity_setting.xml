@@ -13,7 +13,7 @@
         tools:context=".presentation.ui.screen.setting.SettingActivity">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/mt_setting"
+            android:id="@+id/tb_setting"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/space_default"
             android:text="@string/setting"
             android:textAppearance="@style/HeaderText"
-            app:layout_constraintTop_toBottomOf="@id/mt_setting" />
+            app:layout_constraintTop_toBottomOf="@id/tb_setting" />
 
         <FrameLayout
             android:id="@+id/fcv_setting"
