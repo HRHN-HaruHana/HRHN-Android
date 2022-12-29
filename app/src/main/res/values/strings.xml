@@ -25,15 +25,20 @@
     <string name="button_set_alarm">알림설정</string>
 
     <!-- setting -->
-    <string name="setting_category_system">SYSTEM</string>
+    <string name="setting_category_notification">NOTIFICATION</string>
     <string name="setting_notification_title">알림</string>
     <string name="setting_notification_summary">하루 한 번, 알림을 드릴게요</string>
     <string name="setting_time_for_notification_title">알림 시간</string>
 
-    <string name="setting_category_contact">CONTACT</string>
+    <string name="setting_category_support">SUPPORT</string>
     <string name="setting_support_title">문의 및 지원</string>
     <string name="setting_homepage_title">홈페이지</string>
     <string name="setting_opensource_license_title">오픈소스 라이선스</string>
+
+    <!-- link -->
+    <string name="link_support">https://hrhn.notion.site/d56ff2386c464543bbeb20284e3f3469</string>
+    <string name="link_homepage">https://hrhn.notion.site/f7ecd6dca58046b298ad8debfbcc762e</string>
+    <string name="link_opensource">https://hrhn.notion.site/2dd3252ad190433392c58f77e975cb18</string>
 
     <!-- pref key -->
     <string name="key_onboarding_already_shown">key_onboarding_already_shown</string>
