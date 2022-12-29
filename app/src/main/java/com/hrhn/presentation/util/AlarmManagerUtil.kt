@@ -27,4 +27,7 @@ class AlarmManagerUtil(context: Context) {
             pendingIntent
         )
     }
+
+    fun cancelAlarm() = alarmManager.cancel(pendingIntent)
+
 }
