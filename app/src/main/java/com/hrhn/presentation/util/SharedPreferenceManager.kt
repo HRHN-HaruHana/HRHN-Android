@@ -18,6 +18,9 @@ class SharedPreferenceManager(context: Context) {
     val isOnboardingAlreadyShown: Boolean
         get() = sharedPreferences.getBoolean(KEY_ONBOARDING_ALREADY_SHOWN, false)
 
+    val isNotificationOn: Boolean
+        get() = sharedPreferences.getBoolean(KEY_NOTIFICATION_ON_OFF, false)
+
     fun getNotificationHour() = sharedPreferences.getInt(KEY_NOTIFICATION_HOUR, 9)
     fun getNotificationMinute() = sharedPreferences.getInt(KEY_NOTIFICATION_MINUTE, 0)
 
