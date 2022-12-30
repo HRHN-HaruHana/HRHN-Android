@@ -1,5 +1,6 @@
 package com.hrhn.domain.model
 
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class Challenge(
@@ -7,4 +8,4 @@ data class Challenge(
     val date: LocalDateTime = LocalDateTime.now(),
     val content: String = "",
     val emoji: Emoji? = null
-)
+) : Serializable

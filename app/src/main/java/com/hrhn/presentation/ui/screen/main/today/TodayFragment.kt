@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.hrhn.databinding.FragmentTodayBinding
 import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
+import com.hrhn.presentation.ui.screen.edit.EditChallengeActivity
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,6 +55,9 @@ class TodayFragment : Fragment() {
             }
             message.observeEvent(viewLifecycleOwner) {
                 requireContext().showToast(it)
+            }
+            editEvent.observeEvent(viewLifecycleOwner) {
+                startActivity(EditChallengeActivity.newIntent(requireContext(), it))
             }
         }
     }

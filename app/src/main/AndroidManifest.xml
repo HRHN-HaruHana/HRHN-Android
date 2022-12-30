@@ -27,6 +27,12 @@
             android:parentActivityName=".presentation.ui.screen.MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.ui.screen.edit.EditChallengeActivity"
+            android:exported="false"
+            android:parentActivityName=".presentation.ui.screen.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".presentation.ui.screen.addchallenge.AddChallengeActivity"
             android:exported="false"
             android:launchMode="singleTop"

@@ -7,21 +7,28 @@
 
         <variable
             name="vm"
-            type="com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeViewModel" />
+            type="com.hrhn.presentation.ui.screen.edit.EditChallengeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_add_challenge"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back_24" />
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_default"
-            android:text="@string/message_new_challenge"
+            android:text="@string/message_edit_challenge"
             android:textAppearance="@style/HeaderText"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_add_challenge"
             tools:layout_editor_absoluteX="20dp" />
 
         <EditText
@@ -38,7 +45,7 @@
             android:maxLength="50"
             android:paddingHorizontal="@dimen/space_large"
             android:paddingVertical="@dimen/space_default"
-            android:text="@={vm.input}"
+            android:text="@={vm.content}"
             android:textColor="@color/gray_4a"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -50,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="@{String.valueOf(vm.input.length())}"
+            android:text="@{String.valueOf(vm.content.length())}"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_max"
             app:layout_constraintEnd_toStartOf="@id/tv_max"
@@ -73,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="@{vm.nextEnabled}"
-            android:onClick="@{() -> vm.saveNewChallenge()}"
+            android:onClick="@{() -> vm.updateChallenge()}"
             android:text="@string/button_done"
             app:layout_constraintBottom_toBottomOf="parent" />
 

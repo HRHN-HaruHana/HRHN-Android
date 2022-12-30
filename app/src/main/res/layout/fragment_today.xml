@@ -50,6 +50,8 @@
             android:layout_marginTop="@dimen/space_default"
             android:layout_marginBottom="@dimen/space_large"
             android:background="@drawable/bg_challenge_card"
+            android:clickable="@{!vm.isEmpty()}"
+            android:onClick="@{() -> vm.editTodayChallenge()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

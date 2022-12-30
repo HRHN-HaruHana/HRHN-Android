@@ -13,6 +13,7 @@
     <string name="title_check_last_challenge">오늘을 시작하기 전,\n저번 챌린지를 평가하세요</string>
     <string name="button_next">다음</string>
     <string name="message_new_challenge">오늘의 챌린지를\n작성해주세요</string>
+    <string name="message_edit_challenge">오늘의 챌린지를\n수정해주세요</string>
     <string name="hint_for_challenge">오늘의 다짐, 목표, 습관, 영어문장, 할일 혹은 무엇이든 좋아요</string>
     <string name="message_completely_added">챌린지를 등록했어요!</string>
     <string name="button_done">완료</string>
@@ -53,4 +54,5 @@
     <string name="key_notification_on_off">key_notification_on_off</string>
     <string name="key_notification_hour">key_notification_hour</string>
     <string name="key_notification_minute">key_notification_minute</string>
+    <string name="key_challenge_data">key_challenge_data</string>
 </resources>
