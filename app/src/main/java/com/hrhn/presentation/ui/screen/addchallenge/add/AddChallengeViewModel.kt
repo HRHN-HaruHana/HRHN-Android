@@ -1,10 +1,6 @@
 package com.hrhn.presentation.ui.screen.addchallenge.add
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
@@ -26,7 +22,7 @@ class AddChallengeViewModel @Inject constructor(
 
     val input = MutableLiveData<String>()
     val nextEnabled: LiveData<Boolean> = Transformations.map(input) {
-        it.length in 5 until 50
+        it.length in (2..50)
     }
 
     fun saveNewChallenge() {

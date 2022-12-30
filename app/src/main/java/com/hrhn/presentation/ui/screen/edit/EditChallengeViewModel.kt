@@ -23,7 +23,7 @@ class EditChallengeViewModel @Inject constructor(
 
     val content = MutableLiveData<String>()
     val nextEnabled: LiveData<Boolean> = Transformations.map(content) {
-        it.length in 5 until 50
+        it.length in (2..50)
     }
 
     private lateinit var challenge: Challenge

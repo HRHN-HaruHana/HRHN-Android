@@ -42,6 +42,7 @@
             android:hint="@string/hint_for_challenge"
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
+            android:maxLength="50"
             android:paddingHorizontal="@dimen/space_large"
             android:paddingVertical="@dimen/space_default"
             android:text="@={vm.content}"
