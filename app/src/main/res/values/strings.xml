@@ -18,11 +18,19 @@
     <string name="button_done">완료</string>
 
     <!-- onboarding -->
+    <string name="challenge_example_1">암기</string>
+    <string name="challenge_example_2">오늘의 다짐</string>
+    <string name="challenge_example_3">습관형성</string>
+    <string name="challenge_example_4">명언</string>
+    <string name="challenge_example_5">언어공부</string>
+    <string name="challenge_example_6">리마인드</string>
     <string name="app_summary">당신만의 챌린지에\n도전해보세요</string>
     <string name="button_start">시작하기</string>
     <string name="message_onboarding_notification">하루 한번,\n알림을 드릴게요</string>
-    <string name="button_no_alarm">알림 받지 않기</string>
-    <string name="button_set_alarm">알림설정</string>
+    <string name="message_hrhn_summary">오늘의 챌린지를 설정하고 지난 챌린지를 점검하세요</string>
+    <string name="message_notification_setting_info">* 알림설정은 얼마든지 변경할 수 있어요\n* 설정에서 알림을 켜주세요</string>
+    <string name="button_no_alarm">혹은 알림받지않기</string>
+    <string name="button_set_alarm">완료</string>
 
     <!-- setting -->
     <string name="setting_category_notification">NOTIFICATION</string>
