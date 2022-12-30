@@ -5,12 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
-import com.hrhn.R
 import com.hrhn.databinding.FragmentAddChallengeBinding
-import com.hrhn.presentation.ui.screen.addchallenge.DoneFragment
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,10 +43,7 @@ class AddChallengeFragment : Fragment() {
     private fun observeData() {
         with(viewModel) {
             navigateEvent.observeEvent(viewLifecycleOwner) {
-                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                parentFragmentManager.commit {
-                    replace(R.id.fcv_add_challenge, DoneFragment())
-                }
+                requireActivity().finish()
             }
             message.observeEvent(viewLifecycleOwner) {
                 requireContext().showToast(it)
