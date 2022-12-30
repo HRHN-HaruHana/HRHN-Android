@@ -57,13 +57,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
+            style="@style/LargeButton.Rounded"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/space_default"
             android:enabled="@{viewModel.selected!=null}"
             android:onClick="@{() -> viewModel.saveLastChallengeEmoji()}"
             android:text="@string/button_next"
-            app:cornerRadius="@dimen/radius_default"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_emoji" />
     </androidx.constraintlayout.widget.ConstraintLayout>
