@@ -14,7 +14,7 @@ class NotificationUtil(private val channelId: String) {
         pendingIntent: PendingIntent?
     ): Notification {
         return NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_hrhn_noti_icon)
             .setContentTitle(title)
             .setContentText(content)
             .setContentIntent(pendingIntent)
