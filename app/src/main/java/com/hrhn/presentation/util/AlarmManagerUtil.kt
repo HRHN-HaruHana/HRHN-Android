@@ -19,15 +19,14 @@ class AlarmManagerUtil(context: Context) {
         )
     }
 
-    fun setRepeatAlarm(time: LocalDateTime) {
-        alarmManager.setRepeating(
+    fun setAlarm(time: LocalDateTime) {
+        val startTime = time.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
-            time.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(),
-            AlarmManager.INTERVAL_DAY,
+            startTime,
             pendingIntent
         )
     }
 
     fun cancelAlarm() = alarmManager.cancel(pendingIntent)
-
 }

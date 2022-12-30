@@ -72,7 +72,7 @@ class NotificationSettingFragment : Fragment() {
         }
         btnSetAlarm.setOnClickListener {
             if (hasNotificationPermission) {
-                alarmManager.setRepeatAlarm(sharedPreferenceManager.getAlarmTime())
+                alarmManager.setAlarm(sharedPreferenceManager.getAlarmTime())
                 sharedPreferenceManager.updateNotificationOnOff(true)
                 close()
             } else {
