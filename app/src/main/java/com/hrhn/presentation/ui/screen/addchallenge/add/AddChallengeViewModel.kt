@@ -26,7 +26,7 @@ class AddChallengeViewModel @Inject constructor(
 
     val input = MutableLiveData<String>()
     val nextEnabled: LiveData<Boolean> = Transformations.map(input) {
-        it.length in 10 until 100
+        it.length in 5 until 50
     }
 
     fun saveNewChallenge() {
