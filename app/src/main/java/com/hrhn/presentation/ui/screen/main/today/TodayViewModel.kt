@@ -30,6 +30,9 @@ class TodayViewModel @Inject constructor(
     private val _addEvent = MutableLiveData<Event<Unit>>()
     val addEvent: LiveData<Event<Unit>> get() = _addEvent
 
+    private val _editEvent = MutableLiveData<Event<Challenge>>()
+    val editEvent: LiveData<Event<Challenge>> get() = _editEvent
+
     fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getChallengesWithPeriod(
@@ -50,4 +53,5 @@ class TodayViewModel @Inject constructor(
 
     fun addTodayChallenge() = _addEvent.emit()
 
+    fun editTodayChallenge() = _editEvent.emit(todayChallenge.value!!)
 }
