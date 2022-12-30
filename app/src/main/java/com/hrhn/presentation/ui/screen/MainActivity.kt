@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityMainBinding
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContentView(binding.root)
         if (savedInstanceState == null) {
             if (!sharedPreferenceManager.isOnboardingAlreadyShown) {
