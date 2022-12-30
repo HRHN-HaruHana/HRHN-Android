@@ -49,24 +49,28 @@ class NotificationSettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        hasNotificationPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED
-        } else {
-            true
+        checkPermission()
+        initToolbar()
+        initViews()
+    }
+
+    private fun initToolbar() {
+        binding.mtOnboarding.setNavigationOnClickListener {
+            parentFragmentManager.popBackStack()
         }
-        binding.btnTimePicker.text = with(sharedPreferenceManager) {
+    }
+
+    private fun initViews() = with(binding) {
+        btnTimePicker.text = with(sharedPreferenceManager) {
             Formatter.getTimeString(
                 getNotificationHour(),
                 getNotificationMinute()
             )
         }
-        binding.btnTimePicker.setOnClickListener {
+        btnTimePicker.setOnClickListener {
             showTimePicker()
         }
-        binding.btnSetAlarm.setOnClickListener {
+        btnSetAlarm.setOnClickListener {
             if (hasNotificationPermission) {
                 alarmManager.setRepeatAlarm(sharedPreferenceManager.getAlarmTime())
                 sharedPreferenceManager.updateNotificationOnOff(true)
@@ -77,7 +81,18 @@ class NotificationSettingFragment : Fragment() {
                 }
             }
         }
-        binding.btnNoAlarm.setOnClickListener { close() }
+        btnNoAlarm.setOnClickListener { close() }
+    }
+
+    private fun checkPermission() {
+        hasNotificationPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
     }
 
     private fun showTimePicker() {
