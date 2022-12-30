@@ -26,7 +26,8 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnStart.setOnClickListener {
             parentFragmentManager.commit {
-                replace(R.id.fcv_onboarding, RemindFragment())
+                replace(R.id.fcv_onboarding, NotificationSettingFragment())
+                addToBackStack(null)
             }
         }
     }
