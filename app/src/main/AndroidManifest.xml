@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HRHN"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.screen.onboarding.OnboardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.screen.setting.SettingActivity"
             android:exported="false"
             android:parentActivityName=".presentation.ui.screen.MainActivity" />

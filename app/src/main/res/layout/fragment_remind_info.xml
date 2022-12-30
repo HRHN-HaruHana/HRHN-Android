@@ -10,21 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/space_default"
-            android:text="@string/message_completely_added"
-            android:textAppearance="@style/HeaderText"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
             style="@style/LargeButton.Rounded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_done"
+            android:text="@string/button_next"
             app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

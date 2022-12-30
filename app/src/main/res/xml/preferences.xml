@@ -4,7 +4,7 @@
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        app:title="@string/setting_category_system">
+        app:title="@string/setting_category_notification">
 
         <SwitchPreferenceCompat
             android:icon="@drawable/ic_notifications_24"
@@ -20,11 +20,15 @@
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        app:title="@string/setting_category_contact">
+        app:title="@string/setting_category_support">
 
         <Preference
             android:icon="@drawable/ic_call_24"
-            app:title="@string/setting_support_title" />
+            app:title="@string/setting_support_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/link_support" />
+        </Preference>
 
         <PreferenceScreen
             android:icon="@drawable/ic_language_24"
@@ -32,12 +36,16 @@
             app:title="@string/setting_homepage_title">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://www.android.com" />
+                android:data="@string/link_homepage" />
         </PreferenceScreen>
 
         <Preference
             android:icon="@drawable/ic_code_24"
             app:allowDividerAbove="true"
-            app:title="@string/setting_opensource_license_title" />
+            app:title="@string/setting_opensource_license_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/link_opensource" />
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
