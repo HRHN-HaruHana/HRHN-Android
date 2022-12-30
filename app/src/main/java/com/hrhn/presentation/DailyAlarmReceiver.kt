@@ -9,12 +9,20 @@ import android.content.Intent
 import androidx.core.app.TaskStackBuilder
 import com.hrhn.R
 import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
+import com.hrhn.presentation.util.AlarmManagerUtil
 import com.hrhn.presentation.util.NotificationUtil
+import com.hrhn.presentation.util.SharedPreferenceManager
 
 class DailyAlarmReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context?, intent: Intent?) {
+
+    override fun onReceive(context: Context, intent: Intent?) {
+        showNotification(context)
+        setNextAlarm(context)
+    }
+
+    private fun showNotification(context: Context) {
         val notificationManager =
-            context?.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         val channelId = context.getString(R.string.notification_channel_id)
         val addIntent = Intent(context, AddChallengeActivity::class.java)
         val pendingIntent = TaskStackBuilder.create(context).run {
@@ -30,5 +38,12 @@ class DailyAlarmReceiver : BroadcastReceiver() {
         )
 
         notificationManager.notify(1, notification)
+    }
+
+    private fun setNextAlarm(context: Context) {
+        val alarmManager = AlarmManagerUtil(context)
+        val sharedPreferenceManager = SharedPreferenceManager(context)
+        val time = sharedPreferenceManager.getAlarmTime()
+        alarmManager.setAlarm(time)
     }
 }
