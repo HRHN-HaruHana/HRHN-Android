@@ -16,7 +16,10 @@ import com.hrhn.presentation.util.SharedPreferenceManager
 class SettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val notificationOnOffKey by lazy { requireContext().getString(R.string.key_notification_on_off) }
+    private val keyNotificationOnOff by lazy { requireContext().getString(R.string.key_notification_on_off) }
+    private val keyHour by lazy { requireContext().getString(R.string.key_notification_hour) }
+    private val keyMinute by lazy { requireContext().getString(R.string.key_notification_minute) }
+
     private var hasNotificationPermission: Boolean = false
     private val permissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -27,7 +30,7 @@ class SettingFragment : PreferenceFragmentCompat(),
         }
 
     private fun resetOnOff() {
-        findPreference<SwitchPreferenceCompat>(notificationOnOffKey)?.isChecked = false
+        findPreference<SwitchPreferenceCompat>(keyNotificationOnOff)?.isChecked = false
     }
 
     private val alarmManager by lazy { AlarmManagerUtil(requireContext()) }
@@ -56,17 +59,21 @@ class SettingFragment : PreferenceFragmentCompat(),
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        if (key == notificationOnOffKey) {
+        if (key == keyNotificationOnOff || key == keyHour || key == keyMinute) {
             if (sharedPreferenceManager.isNotificationOn) {
-                if (hasNotificationPermission) {
-                    alarmManager.setRepeatAlarm(sharedPreferenceManager.getAlarmTime())
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                    }
-                }
+                updateAlarm()
             } else {
                 alarmManager.cancelAlarm()
+            }
+        }
+    }
+
+    private fun updateAlarm() {
+        if (hasNotificationPermission) {
+            alarmManager.setAlarm(sharedPreferenceManager.getAlarmTime())
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
         }
     }
