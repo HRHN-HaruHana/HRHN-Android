@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:enabled="@{vm.nextEnabled}"
             android:onClick="@{() -> vm.updateChallenge()}"
-            android:text="@string/button_next"
+            android:text="@string/button_done"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
