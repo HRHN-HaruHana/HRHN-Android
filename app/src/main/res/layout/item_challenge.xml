@@ -31,10 +31,12 @@
             android:id="@+id/tv_emoji_label"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/reenie_beanie"
             android:gravity="center"
+            android:padding="@dimen/space_text"
             android:text="@{challenge.emoji.label}"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_body2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text=":D" />

@@ -27,10 +27,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/reenie_beanie"
             android:gravity="center"
+            android:padding="@dimen/space_default"
             android:text="@{info.emoji.label}"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_emoji_label_large"
             app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintTop_toTopOf="parent"
             tools:text=":D" />
@@ -39,11 +41,22 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/checked"
-            android:src="@drawable/ic_check_24"
             android:visibleIf="@{info.checked}"
             app:contentPadding="@dimen/space_default"
             app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/ShapeAppearance.HRHN.MediumComponent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:padding="@dimen/space_default"
+            android:text="✓"
+            android:textColor="@color/white"
+            android:visibleIf="@{info.checked}"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
