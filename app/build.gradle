@@ -13,15 +13,20 @@ android {
         applicationId "com.hrhn"
         minSdk 26
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.0"
+        setProperty("archivesBaseName", "HRHN-v${versionName}(${versionCode})")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    bundle {
+        storeArchive {
+            enable = false
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
