@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HeaderText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/header_label</item>
+        <item name="android:textSize">@dimen/text_size_heading</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="HeaderText.Accent" parent="HeaderText">
+        <item name="android:textColor">@color/red_02</item>
+    </style>
+
+    <style name="CaptionText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/gray_54</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="FloatingText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#D6D5D5</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

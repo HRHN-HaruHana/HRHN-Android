@@ -1,13 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.hrhn.presentation.ui.screen.main.today.TodayViewModel" />
+
+        <variable
+            name="today"
+            type="java.time.LocalDateTime" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            android:text="@string/menu_title_today"
+            android:textAppearance="@style/HeaderText.Accent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text"
+            android:dateWithYear="@{today}"
+            android:textAppearance="@style/CaptionText"
+            android:textColor="@color/secondary_label"
+            app:layout_constraintEnd_toEndOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <View
+            android:id="@+id/view_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/space_large"
+            android:layout_marginTop="@dimen/space_default"
+            android:layout_marginBottom="@dimen/space_large"
+            android:background="@drawable/bg_challenge_card"
+            android:clickable="@{!vm.isEmpty()}"
+            android:onClick="@{() -> vm.editTodayChallenge()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibleIf="@{vm.isEmpty()}"
+            app:constraint_referenced_ids="tv_no_challenge, btn_add_challenge" />
+
+        <TextView
+            android:id="@+id/tv_no_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message_no_challenge"
+            android:textAppearance="@style/CaptionText"
+            android:textColor="@color/dim"
+            app:layout_constraintBottom_toTopOf="@id/btn_add_challenge"
+            app:layout_constraintEnd_toEndOf="@id/view_background"
+            app:layout_constraintStart_toStartOf="@id/view_background"
+            app:layout_constraintTop_toTopOf="@id/view_background"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text"
+            android:onClick="@{()->vm.addTodayChallenge()}"
+            android:text="@string/button_add_challenge"
+            android:textAppearance="@style/CaptionText"
+            android:textColor="@color/reverse_label"
+            app:cornerRadius="@dimen/radius_button"
+            app:layout_constraintBottom_toBottomOf="@id/view_background"
+            app:layout_constraintEnd_toEndOf="@id/tv_no_challenge"
+            app:layout_constraintStart_toStartOf="@id/tv_no_challenge"
+            app:layout_constraintTop_toBottomOf="@id/tv_no_challenge" />
+
+        <TextView
+            android:id="@+id/tv_today_challenge"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/space_large"
+            android:gravity="center"
+            android:text="@{vm.todayChallenge.content}"
+            android:textAppearance="@style/HeaderText"
+            android:textColor="@color/gray_4a"
+            android:visibleIf="@{!vm.isEmpty()}"
+            app:layout_constraintBottom_toBottomOf="@id/view_background"
+            app:layout_constraintEnd_toEndOf="@id/view_background"
+            app:layout_constraintStart_toStartOf="@id/view_background"
+            app:layout_constraintTop_toTopOf="@id/view_background" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

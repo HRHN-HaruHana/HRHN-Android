@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,6 +10,90 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mt_onboarding"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/tv_notification_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            android:gravity="center"
+            android:text="@string/message_onboarding_notification"
+            android:textAppearance="@style/HeaderText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mt_onboarding"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_hrhn_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_large"
+            android:layout_marginTop="@dimen/space_default"
+            android:gravity="center"
+            android:text="@string/message_hrhn_summary"
+            android:textColor="@color/gray_54"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_notification_message" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_time_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_f6"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="@dimen/space_large"
+            android:paddingVertical="@dimen/space_text"
+            android:stateListAnimator="@null"
+            android:textColor="@color/red_02"
+            android:textSize="@dimen/text_size_body1"
+            app:elevation="0dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_no_alarm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_notification_message"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="오전 09:00" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_no_alarm"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text"
+            android:text="@string/button_no_alarm"
+            android:textColor="@color/gray_54"
+            app:layout_constraintBottom_toTopOf="@+id/tv_notification_setting_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_time_picker" />
+
+        <TextView
+            android:id="@+id/tv_notification_setting_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_default"
+            android:gravity="center"
+            android:text="@string/message_notification_setting_info"
+            android:textColor="@color/gray_54"
+            app:layout_constraintBottom_toTopOf="@id/btn_set_alarm" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_set_alarm"
+            style="@style/LargeButton.Rounded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_set_alarm"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
