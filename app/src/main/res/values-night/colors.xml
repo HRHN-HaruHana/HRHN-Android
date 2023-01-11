@@ -11,9 +11,12 @@
     <color name="challenge_list_fill">@color/black</color>
     <color name="challenge_list_label">@color/black</color>
     <color name="challenge_label">@color/white</color>
-    <color name="disabled">@color/black</color>
-    <color name="dim">@color/black</color>
-    <color name="background">@color/black</color>
-    <color name="setting_icon_fill">@color/black</color>
-    <color name="reverse_label">@color/black</color>
+    <color name="disabled">@color/gray_1d</color>
+    <color name="disabled_label">@color/gray_59</color>
+    <color name="dim">@color/gray_d0</color>
+    <color name="background">@color/gray_14</color>
+    <color name="setting_icon_fill">@color/gray_c5</color>
+    <color name="white_label">@color/white</color>
+    <color name="cell_fill">@color/gray_22</color>
+    <color name="cell_label">@color/gray_d4</color>
 </resources>
