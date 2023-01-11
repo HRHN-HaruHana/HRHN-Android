@@ -33,11 +33,6 @@
     <color name="quaternary_label">#2E3C3C43</color>
 
     <color name="header_label">@color/black</color>
-    <color name="challenge_card_fill">@color/gray_fb</color>
-    <color name="challenge_card_label">@color/gray_4a</color>
-    <color name="challenge_list_fill">@color/gray_f6</color>
-    <color name="challenge_list_label">@color/gray_81</color>
-    <color name="challenge_label">@color/gray_4a</color>
     <color name="disabled">@color/gray_ef</color>
     <color name="disabled_label">@color/gray_b9</color>
     <color name="dim">@color/gray_54</color>
