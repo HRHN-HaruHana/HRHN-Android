@@ -17,7 +17,7 @@
     </style>
 
     <style name="FloatingText" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">#D6D5D5</item>
+        <item name="android:textColor">@color/quaternary_label</item>
         <item name="android:textSize">20sp</item>
     </style>
 </resources>
