@@ -56,6 +56,7 @@
             android:stateListAnimator="@null"
             android:textColor="@color/red_02"
             android:textSize="@dimen/text_size_body1"
+            app:cornerRadius="16dp"
             app:elevation="0dp"
             app:layout_constraintBottom_toTopOf="@id/btn_no_alarm"
             app:layout_constraintEnd_toEndOf="parent"
