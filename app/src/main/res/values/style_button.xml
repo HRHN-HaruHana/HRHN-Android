@@ -2,11 +2,11 @@
 <resources>
 
     <style name="LargeButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white_label</item>
         <item name="android:paddingVertical">@dimen/space_default</item>
     </style>
 
     <style name="LargeButton.Rounded" parent="LargeButton">
-        <item name="android:textColor">@color/white_label</item>
         <item name="android:layout_margin">@dimen/space_default</item>
         <item name="cornerRadius">@dimen/radius_button</item>
     </style>

@@ -24,7 +24,7 @@
                 android:id="@+id/tb_past_challenge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|snap">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/message_empty_challenges"
-            android:textColor="@color/gray_81"
+            android:textColor="@color/secondary_label"
             android:visibleIf="@{vm.isEmpty()}" />
 
         <androidx.recyclerview.widget.RecyclerView
