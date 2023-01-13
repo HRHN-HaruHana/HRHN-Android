@@ -19,17 +19,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_default"
+            android:layout_marginTop="@dimen/space_default"
             android:text="@string/title_check_last_challenge"
             android:textAppearance="@style/HeaderText"
-            app:layout_constraintBottom_toTopOf="@+id/tv_last_challenge"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_last_challenge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/space_default"
+            android:layout_marginHorizontal="@dimen/space_medium"
             android:background="@drawable/bg_challenge_card"
             android:ellipsize="end"
             android:gravity="center"
@@ -48,24 +47,12 @@
             android:id="@+id/rv_emoji"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/space_default"
+            android:layout_marginHorizontal="@dimen/space_medium"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/btn_next"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_last_challenge"
             app:spanCount="3"
             tools:itemCount="6"
             tools:listitem="@layout/item_checkable_emoji" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
-            style="@style/LargeButton.Rounded"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space_default"
-            android:enabled="@{viewModel.selected!=null}"
-            android:onClick="@{() -> viewModel.saveLastChallengeEmoji()}"
-            android:text="@string/button_next"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_emoji" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

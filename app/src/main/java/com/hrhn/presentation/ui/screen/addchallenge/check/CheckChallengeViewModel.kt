@@ -78,9 +78,10 @@ class CheckChallengeViewModel @Inject constructor(
             }
             _selected.value = checkableEmoji.emoji
         }
+        saveLastChallengeEmoji()
     }
 
-    fun saveLastChallengeEmoji() {
+    private fun saveLastChallengeEmoji() {
         viewModelScope.launch(Dispatchers.IO) {
             _lastChallenge.value?.copy(emoji = selected.value)?.let {
                 repository.updateChallenge(it)
