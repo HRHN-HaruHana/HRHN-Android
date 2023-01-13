@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.hrhn.presentation.ui.screen.review.ReviewViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_review"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/tv_title_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_default"
+            android:layout_marginTop="@dimen/space_default"
+            android:text="@string/title_check_last_challenge"
+            android:textAppearance="@style/HeaderText"
+            app:layout_constraintTop_toBottomOf="@id/tb_review" />
+
+        <TextView
+            android:id="@+id/tv_last_challenge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_medium"
+            android:background="@drawable/bg_challenge_card"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLength="100"
+            android:maxLines="3"
+            android:minHeight="100dp"
+            android:padding="@dimen/space_default"
+            android:text="@{vm.challenge.content}"
+            android:textColor="@color/cell_label"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/rv_emoji"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_check"
+            tools:text="물 2L 마시기" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_emoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_medium"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_last_challenge"
+            app:spanCount="3"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_checkable_emoji" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
