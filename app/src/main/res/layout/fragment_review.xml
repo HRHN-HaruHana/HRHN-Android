@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.hrhn.presentation.ui.screen.addchallenge.check.CheckChallengeViewModel" />
+            name="vm"
+            type="com.hrhn.presentation.ui.screen.review.ReviewViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +36,7 @@
             android:maxLines="3"
             android:minHeight="100dp"
             android:padding="@dimen/space_default"
-            android:text="@{viewModel.lastChallenge.content}"
+            android:text="@{vm.challenge.content}"
             android:textColor="@color/cell_label"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rv_emoji"
