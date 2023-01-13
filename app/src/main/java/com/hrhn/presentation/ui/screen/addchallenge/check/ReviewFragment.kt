@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CheckChallengeFragment : Fragment() {
+class ReviewFragment : Fragment() {
     private var _binding: FragmentReviewBinding? = null
     private val binding get() = requireNotNull(_binding)
     private val data by lazy {
@@ -83,7 +83,7 @@ class CheckChallengeFragment : Fragment() {
         private const val KEY = "challenge"
         const val KEY_REQUEST_EMOJI = "requestKey"
 
-        fun newInstance(challenge: Challenge) = CheckChallengeFragment().apply {
+        fun newInstance(challenge: Challenge) = ReviewFragment().apply {
             arguments = bundleOf(KEY to challenge)
         }
     }

@@ -9,7 +9,7 @@ import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityAddChanllengeBinding
 import com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeFragment
-import com.hrhn.presentation.ui.screen.addchallenge.check.CheckChallengeFragment
+import com.hrhn.presentation.ui.screen.addchallenge.check.ReviewFragment
 import com.hrhn.presentation.ui.screen.addchallenge.check.CheckChallengeViewModel
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
@@ -29,7 +29,7 @@ class AddChallengeActivity : AppCompatActivity() {
             viewModel.needToUpdateLastChallengeEvent.observeEvent(this) { lastChallenge ->
                 supportFragmentManager.commit {
                     if (lastChallenge != null) {
-                        add(R.id.fcv_add_challenge, CheckChallengeFragment.newInstance(lastChallenge))
+                        add(R.id.fcv_add_challenge, ReviewFragment.newInstance(lastChallenge))
                     } else {
                         add(R.id.fcv_add_challenge, AddChallengeFragment())
                     }
@@ -37,7 +37,7 @@ class AddChallengeActivity : AppCompatActivity() {
             }
             with(supportFragmentManager) {
                 setFragmentResultListener(
-                    CheckChallengeFragment.KEY_REQUEST_EMOJI,
+                    ReviewFragment.KEY_REQUEST_EMOJI,
                     this@AddChallengeActivity
                 ) { _, _ ->
                     commit {
