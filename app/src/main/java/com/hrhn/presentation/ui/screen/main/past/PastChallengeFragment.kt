@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.hrhn.databinding.FragmentPastChallengeBinding
+import com.hrhn.domain.model.Challenge
 import com.hrhn.presentation.ui.screen.main.past.adapter.PastChallengeAdapter
+import com.hrhn.presentation.ui.screen.review.ReviewActivity
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +19,7 @@ class PastChallengeFragment : Fragment() {
     private var _binding: FragmentPastChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)
     private val viewModel by activityViewModels<PastChallengeViewModel>()
-    private val adapter by lazy { PastChallengeAdapter() }
+    private val adapter by lazy { PastChallengeAdapter { navigateToReview(it) } }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +58,10 @@ class PastChallengeFragment : Fragment() {
                 requireContext().showToast(it)
             }
         }
+    }
+
+    private fun navigateToReview(challenge: Challenge) {
+        startActivity(ReviewActivity.newIntent(requireContext(), challenge))
     }
 
     override fun onDestroyView() {
