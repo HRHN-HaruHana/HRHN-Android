@@ -38,10 +38,11 @@
             android:minHeight="100dp"
             android:padding="@dimen/space_default"
             android:text="@{viewModel.lastChallenge.content}"
-            android:textColor="@color/gray_4a"
+            android:textColor="@color/cell_label"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rv_emoji"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_check" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_check"
+            tools:text="물 2L 마시기" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_emoji"

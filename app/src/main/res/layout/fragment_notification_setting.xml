@@ -39,7 +39,7 @@
             android:layout_marginTop="@dimen/space_default"
             android:gravity="center"
             android:text="@string/message_hrhn_summary"
-            android:textColor="@color/gray_54"
+            android:textColor="@color/dim"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_notification_message" />
@@ -48,7 +48,7 @@
             android:id="@+id/btn_time_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray_f6"
+            android:backgroundTint="@color/cell_fill"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:paddingHorizontal="@dimen/space_large"
@@ -56,6 +56,7 @@
             android:stateListAnimator="@null"
             android:textColor="@color/red_02"
             android:textSize="@dimen/text_size_body1"
+            app:cornerRadius="16dp"
             app:elevation="0dp"
             app:layout_constraintBottom_toTopOf="@id/btn_no_alarm"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_text"
             android:text="@string/button_no_alarm"
-            android:textColor="@color/gray_54"
+            android:textColor="@color/dim"
             app:layout_constraintBottom_toTopOf="@+id/tv_notification_setting_message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +85,7 @@
             android:layout_marginBottom="@dimen/space_default"
             android:gravity="center"
             android:text="@string/message_notification_setting_info"
-            android:textColor="@color/gray_54"
+            android:textColor="@color/dim"
             app:layout_constraintBottom_toTopOf="@id/btn_set_alarm" />
 
         <com.google.android.material.button.MaterialButton
