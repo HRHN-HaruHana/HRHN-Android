@@ -26,16 +26,25 @@ class AddChallengeActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         initToolbar()
         if (savedInstanceState == null) {
-            viewModel.needToUpdateLastChallengeEvent
-                .observeEvent(this) { navigateToCheck ->
-                    supportFragmentManager.commit {
-                        if (navigateToCheck) {
-                            add(R.id.fcv_add_challenge, CheckChallengeFragment())
-                        } else {
-                            add(R.id.fcv_add_challenge, AddChallengeFragment())
-                        }
+            viewModel.needToUpdateLastChallengeEvent.observeEvent(this) { lastChallenge ->
+                supportFragmentManager.commit {
+                    if (lastChallenge != null) {
+                        add(R.id.fcv_add_challenge, CheckChallengeFragment.newInstance(lastChallenge))
+                    } else {
+                        add(R.id.fcv_add_challenge, AddChallengeFragment())
                     }
                 }
+            }
+            with(supportFragmentManager) {
+                setFragmentResultListener(
+                    CheckChallengeFragment.KEY_REQUEST_EMOJI,
+                    this@AddChallengeActivity
+                ) { _, _ ->
+                    commit {
+                        replace(R.id.fcv_add_challenge, AddChallengeFragment())
+                    }
+                }
+            }
         }
         observeData()
     }
