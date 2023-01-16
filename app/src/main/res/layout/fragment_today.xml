@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_default"
-            android:text="@string/menu_title_today"
+            android:text="@string/title_today"
             android:textAppearance="@style/HeaderText.Accent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
