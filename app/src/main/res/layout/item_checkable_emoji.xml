@@ -7,7 +7,7 @@
 
         <variable
             name="info"
-            type="com.hrhn.presentation.ui.screen.addchallenge.CheckableEmoji" />
+            type="com.hrhn.presentation.ui.view.CheckableEmoji" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

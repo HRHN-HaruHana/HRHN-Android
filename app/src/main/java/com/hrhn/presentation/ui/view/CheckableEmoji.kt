@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.addchallenge
+package com.hrhn.presentation.ui.view
 
 import com.hrhn.domain.model.Emoji
 
