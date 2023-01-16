@@ -28,7 +28,13 @@ class AddChallengeActivity : AppCompatActivity() {
             viewModel.needToUpdateLastChallengeEvent.observeEvent(this) { lastChallenge ->
                 supportFragmentManager.commit {
                     if (lastChallenge != null) {
-                        add(R.id.fcv_add_challenge, ReviewFragment.newInstance(lastChallenge))
+                        add(
+                            R.id.fcv_add_challenge,
+                            ReviewFragment.newInstance(
+                                challenge = lastChallenge,
+                                hostActivityTag = R.string.tag_add_challenge
+                            )
+                        )
                     } else {
                         add(R.id.fcv_add_challenge, AddChallengeFragment())
                     }

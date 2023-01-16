@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_default"
             android:layout_marginTop="@dimen/space_default"
-            android:text="@string/title_check_last_challenge"
             android:textAppearance="@style/HeaderText"
             app:layout_constraintTop_toTopOf="parent" />
 

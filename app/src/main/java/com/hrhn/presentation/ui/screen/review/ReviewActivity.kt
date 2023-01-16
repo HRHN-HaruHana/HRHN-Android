@@ -28,9 +28,17 @@ class ReviewActivity : AppCompatActivity() {
         initToolbar()
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
-                add(R.id.fcv_review, ReviewFragment.newInstance(data!!))
+                add(
+                    R.id.fcv_review,
+                    ReviewFragment.newInstance(
+                        challenge = data!!,
+                        hostActivityTag = R.string.tag_review_challenge
+                    )
+                )
             }
-            supportFragmentManager.setFragmentResultListener(ReviewFragment.KEY_REQUEST_EMOJI, this) { _, _ ->
+            supportFragmentManager.setFragmentResultListener(
+                ReviewFragment.KEY_REQUEST_EMOJI, this
+            ) { _, _ ->
                 finish()
             }
         }

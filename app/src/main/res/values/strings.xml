@@ -10,7 +10,8 @@
     <string name="message_no_challenge">오늘의 챌린지가 아직 없어요</string>
     <string name="button_add_challenge">챌린지 추가</string>
     <string name="message_empty_challenges">아직 지난 챌린지가 없어요!</string>
-    <string name="title_check_last_challenge">이 챌린지는 어땠나요?</string>
+    <string name="title_check_last_challenge">지난 챌린지는 어땠나요?</string>
+    <string name="title_check_challenge">이 챌린지는 어땠나요?</string>
     <string name="button_next">다음</string>
     <string name="message_new_challenge">오늘의 챌린지를\n작성해주세요</string>
     <string name="message_edit_challenge">오늘의 챌린지를\n수정해주세요</string>
@@ -55,4 +56,6 @@
     <string name="key_notification_hour">key_notification_hour</string>
     <string name="key_notification_minute">key_notification_minute</string>
     <string name="key_challenge_data">key_challenge_data</string>
+    <string name="tag_add_challenge">tag_add_challenge</string>
+    <string name="tag_review_challenge">tag_review_challenge</string>
 </resources>
