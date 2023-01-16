@@ -2,6 +2,7 @@
 <resources>
 
     <style name="LargeButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/white_label</item>
         <item name="android:paddingVertical">@dimen/space_default</item>
     </style>
