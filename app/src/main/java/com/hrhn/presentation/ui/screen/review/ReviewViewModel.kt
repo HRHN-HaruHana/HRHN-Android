@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.model.Emoji
 import com.hrhn.domain.repository.ChallengeRepository
-import com.hrhn.presentation.ui.screen.addchallenge.CheckableEmoji
+import com.hrhn.presentation.ui.view.CheckableEmoji
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
 import dagger.assisted.Assisted

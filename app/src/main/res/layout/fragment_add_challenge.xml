@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeViewModel" />
+            type="com.hrhn.presentation.ui.screen.review.addchallenge.add.AddChallengeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.addchallenge.check
+package com.hrhn.presentation.ui.screen.review
 
 import android.os.Build
 import android.os.Bundle
@@ -11,8 +11,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import com.hrhn.databinding.FragmentReviewBinding
 import com.hrhn.domain.model.Challenge
-import com.hrhn.presentation.ui.screen.review.ReviewViewModel
-import com.hrhn.presentation.ui.screen.review.ReviewViewModelFactory
+import com.hrhn.presentation.ui.view.CheckEmojiAdapter
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint

@@ -9,7 +9,6 @@ import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityReviewBinding
 import com.hrhn.domain.model.Challenge
-import com.hrhn.presentation.ui.screen.addchallenge.check.ReviewFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

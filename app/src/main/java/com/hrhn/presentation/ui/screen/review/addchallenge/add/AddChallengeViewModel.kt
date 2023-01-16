@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.addchallenge.add
+package com.hrhn.presentation.ui.screen.review.addchallenge.add
 
 import androidx.lifecycle.*
 import com.hrhn.domain.model.Challenge

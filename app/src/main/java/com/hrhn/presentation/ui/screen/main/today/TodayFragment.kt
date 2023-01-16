@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.hrhn.databinding.FragmentTodayBinding
-import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
+import com.hrhn.presentation.ui.screen.review.addchallenge.AddChallengeActivity
 import com.hrhn.presentation.ui.screen.edit.EditChallengeActivity
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast

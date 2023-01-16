@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.addchallenge.check
+package com.hrhn.presentation.ui.screen.review.addchallenge
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

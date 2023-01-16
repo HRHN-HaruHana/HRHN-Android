@@ -8,7 +8,7 @@ import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import androidx.core.app.TaskStackBuilder
 import com.hrhn.R
-import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
+import com.hrhn.presentation.ui.screen.review.addchallenge.AddChallengeActivity
 import com.hrhn.presentation.util.AlarmManagerUtil
 import com.hrhn.presentation.util.NotificationUtil
 import com.hrhn.presentation.util.SharedPreferenceManager
