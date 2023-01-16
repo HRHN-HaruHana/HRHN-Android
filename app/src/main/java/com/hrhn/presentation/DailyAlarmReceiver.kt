@@ -32,7 +32,7 @@ class DailyAlarmReceiver : BroadcastReceiver() {
 
         val notification = NotificationUtil(channelId).createNotification(
             context,
-            title = context.getString(R.string.notification_channel_name),
+            title = context.getString(R.string.app_name),
             content = context.getString(R.string.notification_content),
             pendingIntent = pendingIntent
         )
