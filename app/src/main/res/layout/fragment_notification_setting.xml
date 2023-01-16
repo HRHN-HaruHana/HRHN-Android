@@ -70,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_text"
             android:text="@string/button_no_alarm"
+            android:textAllCaps="false"
             android:textColor="@color/dim"
             app:layout_constraintBottom_toTopOf="@+id/tv_notification_setting_message"
             app:layout_constraintEnd_toEndOf="parent"
