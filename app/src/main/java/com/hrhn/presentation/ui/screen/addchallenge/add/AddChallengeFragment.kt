@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.review.addchallenge.add
+package com.hrhn.presentation.ui.screen.addchallenge.add
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.review.addchallenge
+package com.hrhn.presentation.ui.screen.addchallenge
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityAddChanllengeBinding
-import com.hrhn.presentation.ui.screen.review.addchallenge.add.AddChallengeFragment
+import com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeFragment
 import com.hrhn.presentation.ui.screen.review.ReviewFragment
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
