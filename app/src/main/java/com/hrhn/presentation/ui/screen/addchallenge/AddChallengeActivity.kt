@@ -9,8 +9,7 @@ import androidx.fragment.app.commit
 import com.hrhn.R
 import com.hrhn.databinding.ActivityAddChanllengeBinding
 import com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeFragment
-import com.hrhn.presentation.ui.screen.addchallenge.check.CheckChallengeFragment
-import com.hrhn.presentation.ui.screen.addchallenge.check.CheckChallengeViewModel
+import com.hrhn.presentation.ui.screen.review.ReviewFragment
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,16 +25,31 @@ class AddChallengeActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         initToolbar()
         if (savedInstanceState == null) {
-            viewModel.needToUpdateLastChallengeEvent
-                .observeEvent(this) { navigateToCheck ->
-                    supportFragmentManager.commit {
-                        if (navigateToCheck) {
-                            add(R.id.fcv_add_challenge, CheckChallengeFragment())
-                        } else {
-                            add(R.id.fcv_add_challenge, AddChallengeFragment())
-                        }
+            viewModel.needToUpdateLastChallengeEvent.observeEvent(this) { lastChallenge ->
+                supportFragmentManager.commit {
+                    if (lastChallenge != null) {
+                        add(
+                            R.id.fcv_add_challenge,
+                            ReviewFragment.newInstance(
+                                challenge = lastChallenge,
+                                hostActivityTag = R.string.tag_add_challenge
+                            )
+                        )
+                    } else {
+                        add(R.id.fcv_add_challenge, AddChallengeFragment())
                     }
                 }
+            }
+            with(supportFragmentManager) {
+                setFragmentResultListener(
+                    ReviewFragment.KEY_REQUEST_EMOJI,
+                    this@AddChallengeActivity
+                ) { _, _ ->
+                    commit {
+                        replace(R.id.fcv_add_challenge, AddChallengeFragment())
+                    }
+                }
+            }
         }
         observeData()
     }

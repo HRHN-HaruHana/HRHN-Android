@@ -5,12 +5,19 @@
     <color name="clear">#00000000</color>
     <color name="checked">#4D000000</color>
     <color name="gray_fb">#FFFBFBFB</color>
+    <color name="gray_ef">#FFEFEFEF</color>
     <color name="gray_f6">#FFF6F6F6</color>
     <color name="gray_d4">#FFD4D4D4</color>
+    <color name="gray_d0">#FFD0D0D0</color>
     <color name="gray_c5">#FFC5C5C5</color>
     <color name="gray_81">#FF818181</color>
+    <color name="gray_b9">#FFB9B9B9</color>
+    <color name="gray_59">#FF595959</color>
     <color name="gray_54">#FF545454</color>
     <color name="gray_4a">#FF4A4A4A</color>
+    <color name="gray_22">#FF222222</color>
+    <color name="gray_1d">#FF1D1D1D</color>
+    <color name="gray_14">#FF141414</color>
     <color name="red_01">#FFFFBBAC</color>
     <color name="red_02">#DC6046</color>
     <color name="yellow_01">#FFFED977</color>
@@ -26,14 +33,12 @@
     <color name="quaternary_label">#2E3C3C43</color>
 
     <color name="header_label">@color/black</color>
-    <color name="challenge_card_fill">@color/gray_fb</color>
-    <color name="challenge_card_label">@color/gray_4a</color>
-    <color name="challenge_list_fill">@color/gray_f6</color>
-    <color name="challenge_list_label">@color/gray_81</color>
-    <color name="challenge_label">@color/gray_4a</color>
-    <color name="disabled">@color/gray_d4</color>
+    <color name="disabled">@color/gray_ef</color>
+    <color name="disabled_label">@color/gray_b9</color>
     <color name="dim">@color/gray_54</color>
     <color name="background">@color/white</color>
     <color name="setting_icon_fill">@color/gray_c5</color>
-    <color name="reverse_label">@color/white</color>
+    <color name="white_label">@color/white</color>
+    <color name="cell_fill">@color/gray_fb</color>
+    <color name="cell_label">@color/gray_4a</color>
 </resources>

@@ -10,14 +10,20 @@ import com.hrhn.databinding.ItemChallengeBinding
 import com.hrhn.domain.model.Challenge
 import com.hrhn.presentation.util.Color.NONE
 
-class PastChallengeAdapter : ListAdapter<Challenge, PastChallengeAdapter.ViewHolder>(diffUtil) {
-    class ViewHolder(private val binding: ItemChallengeBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+class PastChallengeAdapter(
+    private val review: (Challenge) -> Unit
+) : ListAdapter<Challenge, PastChallengeAdapter.ViewHolder>(diffUtil) {
+
+    class ViewHolder(
+        private val binding: ItemChallengeBinding,
+        private val review: (Challenge) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(challenge: Challenge) {
             with(binding) {
                 this.challenge = challenge
                 ivEmoji.setBackgroundColor(Color.parseColor(challenge.emoji?.color ?: NONE))
             }
+            binding.root.setOnClickListener { review(challenge) }
         }
     }
 
@@ -27,7 +33,7 @@ class PastChallengeAdapter : ListAdapter<Challenge, PastChallengeAdapter.ViewHol
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), review
         )
     }
 

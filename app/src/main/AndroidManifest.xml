@@ -18,6 +18,11 @@
         android:theme="@style/Theme.HRHN"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.screen.review.ReviewActivity"
+            android:exported="false"
+            android:parentActivityName=".presentation.ui.screen.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".presentation.ui.screen.onboarding.OnboardingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -61,4 +66,5 @@
         </receiver>
         <receiver android:name=".presentation.DailyAlarmReceiver" />
     </application>
+
 </manifest>

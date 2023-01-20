@@ -1,4 +1,4 @@
-package com.hrhn.presentation.ui.screen.addchallenge.check
+package com.hrhn.presentation.ui.view
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hrhn.databinding.ItemCheckableEmojiBinding
-import com.hrhn.presentation.ui.screen.addchallenge.CheckableEmoji
 
 class CheckEmojiAdapter(
     private val onCheckedChange: (CheckableEmoji) -> Unit
