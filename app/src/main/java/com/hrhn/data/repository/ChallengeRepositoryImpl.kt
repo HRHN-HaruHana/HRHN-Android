@@ -1,8 +1,10 @@
 package com.hrhn.data.repository
 
+import androidx.paging.PagingData
 import com.hrhn.data.local.source.ChallengeDataSource
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
+import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -11,6 +13,9 @@ import javax.inject.Singleton
 class ChallengeRepositoryImpl @Inject constructor(
     private val challengeDataSource: ChallengeDataSource
 ) : ChallengeRepository {
+    override val challengesFlow: Flow<PagingData<Challenge>>
+        get() = challengeDataSource.challengesFlow
+
     override fun insertChallenge(challenge: Challenge): Result<Unit> {
         return runCatching { challengeDataSource.insertChallenge(challenge) }
     }
