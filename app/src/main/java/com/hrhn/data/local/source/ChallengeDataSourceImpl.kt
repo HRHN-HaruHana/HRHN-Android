@@ -30,6 +30,10 @@ class ChallengeDataSourceImpl @Inject constructor(
         return challengeDao.getChallenges().map { it.toModel() }
     }
 
+    override fun getLastChallenge(): Challenge? {
+        return challengeDao.getLastChallenge()?.toModel()
+    }
+
     override fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): List<Challenge> {
         return challengeDao.getChallengesWithPeriod(from, to).map { it.toModel() }
     }
