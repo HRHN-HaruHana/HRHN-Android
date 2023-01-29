@@ -16,6 +16,9 @@ interface ChallengeDao {
     @Query("SELECT * FROM challenge ORDER BY date DESC")
     fun getChallenges(): List<ChallengeEntity>
 
+    @Query("SELECT * FROM challenge ORDER BY date DESC LIMIT 1")
+    fun getLastChallenge(): ChallengeEntity?
+
     @Query("SELECT * FROM challenge ORDER BY date DESC")
     fun getChallengesFlow(): PagingSource<Int, ChallengeEntity>
 
