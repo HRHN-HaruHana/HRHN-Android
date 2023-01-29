@@ -9,7 +9,6 @@ import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
@@ -29,7 +28,7 @@ class CheckChallengeViewModel @Inject constructor(
     val message: LiveData<Event<String>> get() = _message
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.getLastChallenge()
                 .onSuccess {
                     if (it != null && it.date.toLocalDate() == LocalDate.now()) {
