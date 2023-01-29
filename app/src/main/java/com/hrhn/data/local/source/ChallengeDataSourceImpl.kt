@@ -26,8 +26,8 @@ class ChallengeDataSourceImpl @Inject constructor(
         challengeDao.insertChallenge(challenge.toEntity())
     }
 
-    override fun getChallenges(): List<Challenge> {
-        return challengeDao.getChallenges().map { it.toModel() }
+    override suspend fun getLastChallenge(): Challenge? {
+        return challengeDao.getLastChallenge()?.toModel()
     }
 
     override fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): List<Challenge> {
