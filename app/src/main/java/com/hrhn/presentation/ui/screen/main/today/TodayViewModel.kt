@@ -5,18 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hrhn.domain.model.Challenge
-import com.hrhn.domain.repository.ChallengeRepository
+import com.hrhn.domain.usecase.GetTodayChallengeUseCase
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
 class TodayViewModel @Inject constructor(
-    private val repository: ChallengeRepository
+    private val getTodayChallengeUseCase: GetTodayChallengeUseCase
 ) : ViewModel() {
     private val _isEmpty = MutableLiveData<Boolean>(true)
     val isEmpty: LiveData<Boolean> get() = _isEmpty
@@ -35,19 +34,17 @@ class TodayViewModel @Inject constructor(
 
     fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getChallengesWithPeriod(
-                LocalDate.now().atStartOfDay(),
-                LocalDate.now().plusDays(1).atStartOfDay()
-            ).onSuccess {
-                if (it.isNotEmpty()) {
-                    _isEmpty.postValue(false)
-                    _todayChallenge.postValue(it[0])
-                } else {
-                    _isEmpty.postValue(true)
+            getTodayChallengeUseCase()
+                .onSuccess {
+                    if (it != null) {
+                        _isEmpty.postValue(false)
+                        _todayChallenge.postValue(it)
+                    } else {
+                        _isEmpty.postValue(true)
+                    }
+                }.onFailure { t ->
+                    t.message?.let { _message.emit(it) }
                 }
-            }.onFailure { t ->
-                t.message?.let { _message.emit(it) }
-            }
         }
     }
 
