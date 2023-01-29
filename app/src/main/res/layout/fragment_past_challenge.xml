@@ -37,19 +37,18 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
+            android:id="@+id/tv_empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/message_empty_challenges"
-            android:textColor="@color/secondary_label"
-            android:visibleIf="@{vm.isEmpty()}" />
+            android:textColor="@color/secondary_label" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_past_challenge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/space_default"
-            android:visibleIf="@{!vm.isEmpty()}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/item_challenge" />

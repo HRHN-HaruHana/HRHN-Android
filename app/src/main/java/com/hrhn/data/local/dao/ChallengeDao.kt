@@ -1,5 +1,6 @@
 package com.hrhn.data.local.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -14,6 +15,9 @@ interface ChallengeDao {
 
     @Query("SELECT * FROM challenge ORDER BY date DESC")
     fun getChallenges(): List<ChallengeEntity>
+
+    @Query("SELECT * FROM challenge ORDER BY date DESC")
+    fun getChallengesFlow(): PagingSource<Int, ChallengeEntity>
 
     @Query("SELECT * FROM challenge WHERE date BETWEEN :from AND :to ORDER BY date DESC")
     fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): List<ChallengeEntity>
