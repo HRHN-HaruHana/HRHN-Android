@@ -9,7 +9,7 @@ interface ChallengeRepository {
     val challengesFlow: Flow<PagingData<Challenge>>
     fun insertChallenge(challenge: Challenge): Result<Unit>
     fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): Result<List<Challenge>>
-    fun getLastChallenge(): Result<Challenge?>
+    suspend fun getLastChallenge(): Result<Challenge?>
     fun updateChallenge(challenge: Challenge): Result<Unit>
     fun deleteChallenge(id: Long): Result<Unit>
 }

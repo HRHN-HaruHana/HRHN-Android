@@ -26,7 +26,7 @@ class ChallengeDataSourceImpl @Inject constructor(
         challengeDao.insertChallenge(challenge.toEntity())
     }
 
-    override fun getLastChallenge(): Challenge? {
+    override suspend fun getLastChallenge(): Challenge? {
         return challengeDao.getLastChallenge()?.toModel()
     }
 

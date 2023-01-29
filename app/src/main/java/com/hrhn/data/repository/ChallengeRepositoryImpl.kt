@@ -27,7 +27,7 @@ class ChallengeRepositoryImpl @Inject constructor(
         return runCatching { challengeDataSource.getChallengesWithPeriod(from, to) }
     }
 
-    override fun getLastChallenge(): Result<Challenge?> {
+    override suspend fun getLastChallenge(): Result<Challenge?> {
         return runCatching { challengeDataSource.getLastChallenge() }
     }
 
