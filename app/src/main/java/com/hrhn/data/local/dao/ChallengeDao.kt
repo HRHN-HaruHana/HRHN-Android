@@ -13,9 +13,6 @@ interface ChallengeDao {
     @Insert
     fun insertChallenge(challengeEntity: ChallengeEntity)
 
-    @Query("SELECT * FROM challenge ORDER BY date DESC")
-    fun getChallenges(): List<ChallengeEntity>
-
     @Query("SELECT * FROM challenge ORDER BY date DESC LIMIT 1")
     fun getLastChallenge(): ChallengeEntity?
 
