@@ -20,10 +20,6 @@ class ChallengeRepositoryImpl @Inject constructor(
         return runCatching { challengeDataSource.insertChallenge(challenge) }
     }
 
-    override fun getChallenges(): Result<List<Challenge>> {
-        return runCatching { challengeDataSource.getChallenges() }
-    }
-
     override fun getChallengesWithPeriod(
         from: LocalDateTime,
         to: LocalDateTime
@@ -32,7 +28,7 @@ class ChallengeRepositoryImpl @Inject constructor(
     }
 
     override fun getLastChallenge(): Result<Challenge?> {
-        return runCatching { challengeDataSource.getChallenges().getOrNull(0) }
+        return runCatching { challengeDataSource.getLastChallenge() }
     }
 
     override fun updateChallenge(challenge: Challenge): Result<Unit> {
