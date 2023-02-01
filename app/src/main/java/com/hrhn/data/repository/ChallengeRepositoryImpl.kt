@@ -23,8 +23,8 @@ class ChallengeRepositoryImpl @Inject constructor(
     override fun getChallengesWithPeriod(
         from: LocalDateTime,
         to: LocalDateTime
-    ): Result<List<Challenge>> {
-        return runCatching { challengeDataSource.getChallengesWithPeriod(from, to) }
+    ): Flow<List<Challenge>> {
+        return challengeDataSource.getChallengesWithPeriod(from, to)
     }
 
     override suspend fun getLastChallenge(): Result<Challenge?> {

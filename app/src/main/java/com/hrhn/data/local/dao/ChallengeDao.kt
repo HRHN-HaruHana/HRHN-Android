@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.hrhn.data.entity.ChallengeEntity
+import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 
 @Dao
@@ -20,7 +21,7 @@ interface ChallengeDao {
     fun getChallengesFlow(): PagingSource<Int, ChallengeEntity>
 
     @Query("SELECT * FROM challenge WHERE date BETWEEN :from AND :to ORDER BY date DESC")
-    fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): List<ChallengeEntity>
+    fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): Flow<List<ChallengeEntity>>
 
     @Update
     fun updateChallenge(challengeEntity: ChallengeEntity)
