@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.hrhn.TodayChallengeWidgetProvider
 import com.hrhn.databinding.ActivityEditChanllengeBinding
 import com.hrhn.domain.model.Challenge
 import com.hrhn.presentation.util.observeEvent
@@ -51,6 +52,7 @@ class EditChallengeActivity : AppCompatActivity() {
             showToast(it)
         }
         viewModel.finishEvent.observeEvent(this) {
+            TodayChallengeWidgetProvider.newIntent(this)
             finish()
         }
     }
