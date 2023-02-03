@@ -43,4 +43,5 @@
     <string name="setting_support_title">문의 및 지원</string>
     <string name="setting_homepage_title">홈페이지</string>
     <string name="setting_opensource_license_title">오픈소스 라이선스</string>
+    <string name="today_widget_description">오늘의 챌린지</string>
 </resources>

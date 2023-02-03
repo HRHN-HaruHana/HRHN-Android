@@ -97,7 +97,7 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/space_large"
             android:gravity="center"
-            android:text="@{vm.todayChallenge.content}"
+            android:text="@{vm.todayChallengeFlow.content}"
             android:textAppearance="@style/HeaderText"
             android:textColor="@color/cell_label"
             android:visibleIf="@{!vm.isEmpty()}"

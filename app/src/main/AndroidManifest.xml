@@ -17,11 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HRHN"
         tools:targetApi="31">
+
         <activity
             android:name=".presentation.ui.screen.review.ReviewActivity"
             android:exported="false"
             android:parentActivityName=".presentation.ui.screen.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.ui.screen.onboarding.OnboardingActivity"
             android:exported="false"
@@ -65,6 +66,19 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".presentation.DailyAlarmReceiver" />
+
+        <receiver
+            android:name=".TodayChallengeWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/today_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

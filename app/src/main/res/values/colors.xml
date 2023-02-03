@@ -41,4 +41,8 @@
     <color name="white_label">@color/white</color>
     <color name="cell_fill">@color/gray_fb</color>
     <color name="cell_label">@color/gray_4a</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>
