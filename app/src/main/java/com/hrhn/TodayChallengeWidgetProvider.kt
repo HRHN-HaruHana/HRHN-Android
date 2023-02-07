@@ -1,5 +1,7 @@
 package com.hrhn
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
@@ -18,6 +20,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.ZoneId
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,30 +29,41 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
     @Inject
     lateinit var repository: ChallengeRepository
 
+    override fun onEnabled(context: Context) {
+        super.onEnabled(context)
+        handleUpdateEvent(context)
+        setNextAlarm(context)
+    }
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        handleUpdateEvent(context, appWidgetManager, appWidgetIds)
+        handleUpdateEvent(context)
     }
 
     override fun onReceive(context: Context, intent: Intent?) {
         super.onReceive(context, intent)
-        if (intent?.action == AppWidgetManager.ACTION_APPWIDGET_UPDATE) {
-            val appWidgetManager = AppWidgetManager.getInstance(context)
-            val appWidgetIds = appWidgetManager.getAppWidgetIds(
-                ComponentName(context, TodayChallengeWidgetProvider::class.java)
-            )
-            handleUpdateEvent(context, appWidgetManager, appWidgetIds)
+
+        intent?.action.also { action ->
+            if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+                || action.equals(ACTION_DAILY_WIDGET_UPDATE)
+            ) {
+                handleUpdateEvent(context)
+
+                if (action.equals(ACTION_DAILY_WIDGET_UPDATE)) {
+                    setNextAlarm(context)
+                }
+            }
         }
     }
 
-    private fun handleUpdateEvent(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetIds: IntArray
-    ) {
+    private fun handleUpdateEvent(context: Context) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(
+            ComponentName(context, TodayChallengeWidgetProvider::class.java)
+        )
         CoroutineScope(Dispatchers.Main).launch {
             val today = async { getTodayChallenge().first() }
             for (appWidgetId in appWidgetIds) {
@@ -88,7 +102,36 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
     }
 
+    private fun setNextAlarm(context: Context) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val pendingIntent = getDailyUpdatePendingIntent(context)
+        val time = LocalDate.now().plusDays(1).atStartOfDay()
+            .atZone(ZoneId.systemDefault()).toInstant()
+            .toEpochMilli()
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC, time, pendingIntent)
+    }
+
+    private fun getDailyUpdatePendingIntent(context: Context): PendingIntent {
+        return PendingIntent.getBroadcast(
+            context,
+            2,
+            Intent(context, TodayChallengeWidgetProvider::class.java).apply {
+                action = ACTION_DAILY_WIDGET_UPDATE
+            },
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+    }
+
+    override fun onDisabled(context: Context?) {
+        super.onDisabled(context)
+        val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val pendingIntent = getDailyUpdatePendingIntent(context)
+        alarmManager.cancel(pendingIntent)
+    }
+
     companion object {
+        private const val ACTION_DAILY_WIDGET_UPDATE = "ACTION_DAILY_WIDGET_UPDATE"
+
         fun newIntent(context: Context) {
             val intent = Intent(context, TodayChallengeWidgetProvider::class.java).apply {
                 action = AppWidgetManager.ACTION_APPWIDGET_UPDATE

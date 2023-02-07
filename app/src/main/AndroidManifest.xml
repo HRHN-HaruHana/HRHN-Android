@@ -72,7 +72,7 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="ACTION_DAILY_WIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
