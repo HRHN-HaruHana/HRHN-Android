@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.hrhn.TodayChallengeWidgetProvider
+import com.hrhn.presentation.widget.TodayChallengeWidgetProvider
 import com.hrhn.databinding.FragmentAddChallengeBinding
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast

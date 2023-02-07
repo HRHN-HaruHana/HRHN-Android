@@ -6,7 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.hrhn.TodayChallengeWidgetProvider
+import com.hrhn.presentation.widget.TodayChallengeWidgetProvider
 import com.hrhn.databinding.ActivityEditChanllengeBinding
 import com.hrhn.domain.model.Challenge
 import com.hrhn.presentation.util.observeEvent

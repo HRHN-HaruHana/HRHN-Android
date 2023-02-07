@@ -68,7 +68,7 @@
         <receiver android:name=".presentation.DailyAlarmReceiver" />
 
         <receiver
-            android:name=".TodayChallengeWidgetProvider"
+            android:name=".presentation.widget.TodayChallengeWidgetProvider"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

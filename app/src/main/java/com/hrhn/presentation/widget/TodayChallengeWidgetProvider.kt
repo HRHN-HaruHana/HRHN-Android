@@ -1,4 +1,4 @@
-package com.hrhn
+package com.hrhn.presentation.widget
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.RemoteViews
+import com.hrhn.R
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import dagger.hilt.android.AndroidEntryPoint
