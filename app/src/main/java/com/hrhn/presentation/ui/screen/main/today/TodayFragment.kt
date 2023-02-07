@@ -6,13 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.hrhn.databinding.FragmentTodayBinding
 import com.hrhn.presentation.ui.screen.addchallenge.AddChallengeActivity
 import com.hrhn.presentation.ui.screen.edit.EditChallengeActivity
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import java.time.LocalDateTime
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class TodayFragment : Fragment() {
@@ -35,11 +37,16 @@ class TodayFragment : Fragment() {
         observeData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchData()
+    }
+
     private fun initViews() {
         with(binding) {
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
-            today = LocalDateTime.now()
+            srlToday.setOnRefreshListener { viewModel.fetchData() }
         }
     }
 
@@ -54,6 +61,9 @@ class TodayFragment : Fragment() {
             editEvent.observeEvent(viewLifecycleOwner) {
                 startActivity(EditChallengeActivity.newIntent(requireContext(), it))
             }
+            isRefreshing.onEach {
+                binding.srlToday.isRefreshing = it
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
         }
     }
 
