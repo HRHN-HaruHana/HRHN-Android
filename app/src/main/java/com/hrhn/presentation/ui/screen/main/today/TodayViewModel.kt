@@ -5,25 +5,44 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hrhn.domain.model.Challenge
-import com.hrhn.domain.usecase.GetTodayChallengeUseCase
+import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
 class TodayViewModel @Inject constructor(
-    getTodayChallengeUseCase: GetTodayChallengeUseCase
+    private val repository: ChallengeRepository
 ) : ViewModel() {
-    val todayChallengeFlow: StateFlow<Challenge?> = getTodayChallengeUseCase()
-        .catch { e ->
-            e.message?.let { _message.emit(it) }
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(500),
-            initialValue = null
-        )
+
+    private val _isRefreshing = MutableSharedFlow<Boolean>()
+    val isRefreshing = _isRefreshing.asSharedFlow()
+
+    private val _today = MutableSharedFlow<LocalDateTime>()
+    val today = _today.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(500),
+        initialValue = LocalDateTime.now()
+    )
+
+    val todayChallengeFlow: StateFlow<Challenge?> = _today.map { today ->
+        repository.getChallengesWithPeriod(today, today.plusDays(1)).map {
+            if (it.isNotEmpty()) it.getOrNull(0) else null
+        }.first()
+    }.catch { e ->
+        e.message?.let { _message.emit(it) }
+    }.onEach {
+        _isRefreshing.emit(false)
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(500),
+        initialValue = null
+    )
 
     val isEmpty: StateFlow<Boolean> = todayChallengeFlow.map { it == null }.stateIn(
         scope = viewModelScope,
@@ -39,6 +58,13 @@ class TodayViewModel @Inject constructor(
 
     private val _editEvent = MutableLiveData<Event<Challenge>>()
     val editEvent: LiveData<Event<Challenge>> get() = _editEvent
+
+    fun fetchData() {
+        viewModelScope.launch {
+            _isRefreshing.emit(true)
+            _today.emit(LocalDate.now().atStartOfDay())
+        }
+    }
 
     fun addTodayChallenge() = _addEvent.emit()
 
