@@ -12,4 +12,10 @@
     <dimen name="text_size_caption">12sp</dimen>
     <dimen name="text_size_emoji_label">30sp</dimen>
     <dimen name="text_size_emoji_label_large">50sp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">0dp</dimen>
 </resources>

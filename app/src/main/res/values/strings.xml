@@ -59,4 +59,5 @@
     <string name="key_challenge_data" translatable="false">key_challenge_data</string>
     <string name="tag_add_challenge" translatable="false">tag_add_challenge</string>
     <string name="tag_review_challenge" translatable="false">tag_review_challenge</string>
+    <string name="today_widget_description">Challenge of the Day</string>
 </resources>
