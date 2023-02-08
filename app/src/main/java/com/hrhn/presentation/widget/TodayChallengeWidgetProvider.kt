@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.view.View
 import android.widget.RemoteViews
 import com.hrhn.R
@@ -29,6 +30,15 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
 
     @Inject
     lateinit var repository: ChallengeRepository
+    private val intentFilter by lazy {
+        IntentFilter().apply {
+            addAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+            addAction(Intent.ACTION_DATE_CHANGED)
+            addAction(Intent.ACTION_TIME_CHANGED)
+            addAction(Intent.ACTION_TIMEZONE_CHANGED)
+            addAction(ACTION_DAILY_WIDGET_UPDATE)
+        }
+    }
 
     override fun onEnabled(context: Context) {
         super.onEnabled(context)
@@ -46,14 +56,10 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         super.onReceive(context, intent)
-
         intent?.action.also { action ->
-            if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
-                || action.equals(ACTION_DAILY_WIDGET_UPDATE)
-            ) {
+            if (intentFilter.hasAction(action)) {
                 handleUpdateEvent(context)
-
-                if (action.equals(ACTION_DAILY_WIDGET_UPDATE)) {
+                if (action.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE).not()) {
                     setNextAlarm(context)
                 }
             }
