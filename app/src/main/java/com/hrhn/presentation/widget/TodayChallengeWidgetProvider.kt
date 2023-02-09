@@ -8,7 +8,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.view.View
 import android.widget.RemoteViews
 import com.hrhn.R
 import com.hrhn.domain.model.Challenge
@@ -94,17 +93,9 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
         appWidgetId: Int,
         today: Challenge?
     ) {
-        val emptyText = context.getString(R.string.message_new_challenge)
+        val emptyText = context.getString(R.string.today_widget_placeholder)
         val remoteViews = RemoteViews(context.packageName, R.layout.today_widget).apply {
-            if (today != null) {
-                setViewVisibility(R.id.tv_empty, View.INVISIBLE)
-                setViewVisibility(R.id.tv_today_challenge, View.VISIBLE)
-                setTextViewText(R.id.tv_today_challenge, today.content)
-            } else {
-                setTextViewText(R.id.tv_empty, emptyText)
-                setViewVisibility(R.id.tv_empty, View.VISIBLE)
-                setViewVisibility(R.id.tv_today_challenge, View.INVISIBLE)
-            }
+            setTextViewText(R.id.tv_today_challenge, today?.content ?: emptyText)
         }
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
     }

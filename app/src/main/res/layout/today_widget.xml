@@ -5,19 +5,13 @@
     android:theme="@style/Theme.HRHN.AppWidgetContainer">
 
     <TextView
-        android:id="@+id/tv_empty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="8dp"
-        android:textSize="12sp" />
-
-    <TextView
         android:id="@+id/tv_today_challenge"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="8dp"
-        android:textSize="18sp"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:text="@string/today_widget_description"
+        android:textSize="12sp"
         android:textStyle="bold" />
 </RelativeLayout>
