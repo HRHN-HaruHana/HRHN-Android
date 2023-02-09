@@ -69,7 +69,8 @@
 
         <receiver
             android:name=".presentation.widget.TodayChallengeWidgetProvider"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/today_widget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.DATE_CHANGED" />

@@ -59,5 +59,9 @@
     <string name="key_challenge_data" translatable="false">key_challenge_data</string>
     <string name="tag_add_challenge" translatable="false">tag_add_challenge</string>
     <string name="tag_review_challenge" translatable="false">tag_review_challenge</string>
-    <string name="today_widget_description">Challenge of the Day</string>
+
+    <!-- widget -->
+    <string name="today_widget_title">Challenge of the day</string>
+    <string name="today_widget_description">Check challenge of the day</string>
+    <string name="today_widget_placeholder">Add challenge of the day!</string>
 </resources>

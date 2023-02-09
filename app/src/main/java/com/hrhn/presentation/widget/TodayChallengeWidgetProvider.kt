@@ -8,11 +8,11 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.view.View
 import android.widget.RemoteViews
 import com.hrhn.R
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
+import com.hrhn.presentation.ui.screen.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -94,17 +94,18 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
         appWidgetId: Int,
         today: Challenge?
     ) {
-        val emptyText = context.getString(R.string.message_new_challenge)
+        val pendingIntent = Intent(context, MainActivity::class.java).let { intent ->
+            PendingIntent.getActivity(
+                context,
+                2,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+        val emptyText = context.getString(R.string.today_widget_placeholder)
         val remoteViews = RemoteViews(context.packageName, R.layout.today_widget).apply {
-            if (today != null) {
-                setViewVisibility(R.id.tv_empty, View.INVISIBLE)
-                setViewVisibility(R.id.tv_today_challenge, View.VISIBLE)
-                setTextViewText(R.id.tv_today_challenge, today.content)
-            } else {
-                setTextViewText(R.id.tv_empty, emptyText)
-                setViewVisibility(R.id.tv_empty, View.VISIBLE)
-                setViewVisibility(R.id.tv_today_challenge, View.INVISIBLE)
-            }
+            setTextViewText(R.id.tv_today_challenge, today?.content ?: emptyText)
+            setOnClickPendingIntent(R.id.tv_today_challenge, pendingIntent)
         }
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
     }
