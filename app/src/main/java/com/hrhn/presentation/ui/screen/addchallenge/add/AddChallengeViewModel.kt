@@ -8,7 +8,6 @@ import com.hrhn.presentation.util.emit
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AddChallengeViewModel @AssistedInject constructor(
@@ -28,7 +27,7 @@ class AddChallengeViewModel @AssistedInject constructor(
 
     fun saveNewChallenge() {
         val content = requireNotNull(input.value)
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.insertChallenge(challenge.copy(content = content))
                 .onSuccess {
                     _navigateEvent.emit()

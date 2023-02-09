@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 @Dao
 interface ChallengeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertChallenge(challengeEntity: ChallengeEntity)
+    suspend fun insertChallenge(challengeEntity: ChallengeEntity)
 
     @Query("SELECT * FROM challenge ORDER BY date DESC LIMIT 1")
     suspend fun getLastChallenge(): ChallengeEntity?

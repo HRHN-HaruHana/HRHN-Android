@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 interface ChallengeDataSource {
     val challengesFlow: Flow<PagingData<Challenge>>
-    fun insertChallenge(challenge: Challenge)
+    suspend fun insertChallenge(challenge: Challenge)
     suspend fun getLastChallenge(): Challenge?
     fun getChallengesWithPeriod(from: LocalDateTime, to: LocalDateTime): Flow<List<Challenge>>
     fun updateChallenge(challenge: Challenge)

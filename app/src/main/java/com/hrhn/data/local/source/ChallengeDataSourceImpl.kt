@@ -22,7 +22,7 @@ class ChallengeDataSourceImpl @Inject constructor(
         get() = Pager(PagingConfig(10)) { challengeDao.getChallengesFlow() }
             .flow.map { it.map { it.toModel() } }
 
-    override fun insertChallenge(challenge: Challenge) {
+    override suspend fun insertChallenge(challenge: Challenge) {
         challengeDao.insertChallenge(challenge.toEntity())
     }
 
