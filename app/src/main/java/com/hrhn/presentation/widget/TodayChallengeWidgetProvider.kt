@@ -12,6 +12,7 @@ import android.widget.RemoteViews
 import com.hrhn.R
 import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
+import com.hrhn.presentation.ui.screen.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -93,9 +94,18 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
         appWidgetId: Int,
         today: Challenge?
     ) {
+        val pendingIntent = Intent(context, MainActivity::class.java).let { intent ->
+            PendingIntent.getActivity(
+                context,
+                2,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
         val emptyText = context.getString(R.string.today_widget_placeholder)
         val remoteViews = RemoteViews(context.packageName, R.layout.today_widget).apply {
             setTextViewText(R.id.tv_today_challenge, today?.content ?: emptyText)
+            setOnClickPendingIntent(R.id.rl_widget, pendingIntent)
         }
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
     }
