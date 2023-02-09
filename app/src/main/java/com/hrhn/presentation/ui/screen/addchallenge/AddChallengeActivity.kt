@@ -36,7 +36,7 @@ class AddChallengeActivity : AppCompatActivity() {
                             )
                         )
                     } else {
-                        add(R.id.fcv_add_challenge, AddChallengeFragment())
+                        add(R.id.fcv_add_challenge, AddChallengeFragment.newInstance())
                     }
                 }
             }
@@ -46,7 +46,7 @@ class AddChallengeActivity : AppCompatActivity() {
                     this@AddChallengeActivity
                 ) { _, _ ->
                     commit {
-                        replace(R.id.fcv_add_challenge, AddChallengeFragment())
+                        replace(R.id.fcv_add_challenge, AddChallengeFragment.newInstance())
                     }
                 }
             }

@@ -21,7 +21,7 @@ class AddChallengeViewModel @AssistedInject constructor(
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> get() = _message
 
-    val input = MutableLiveData<String>()
+    val input = MutableLiveData<String>(challenge.content)
     val nextEnabled: LiveData<Boolean> = Transformations.map(input) {
         it.length in (2..50)
     }
@@ -29,7 +29,7 @@ class AddChallengeViewModel @AssistedInject constructor(
     fun saveNewChallenge() {
         val content = requireNotNull(input.value)
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertChallenge(Challenge(content = content))
+            repository.insertChallenge(challenge.copy(content = content))
                 .onSuccess {
                     _navigateEvent.emit()
                 }
