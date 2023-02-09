@@ -5,14 +5,15 @@ import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
-import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class AddChallengeViewModel @Inject constructor(
-    private val repository: ChallengeRepository
+class AddChallengeViewModel @AssistedInject constructor(
+    private val repository: ChallengeRepository,
+    @Assisted val challenge: Challenge
 ) : ViewModel() {
     private val _navigateEvent = MutableLiveData<Event<Unit>>()
     val navigateEvent: LiveData<Event<Unit>> get() = _navigateEvent
@@ -37,4 +38,21 @@ class AddChallengeViewModel @Inject constructor(
                 }
         }
     }
+
+    companion object {
+        fun provideFactory(
+            assistedFactory: AddEditChallengeViewModelFactory,
+            challenge: Challenge
+        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return assistedFactory.create(challenge) as T
+            }
+        }
+    }
+}
+
+@AssistedFactory
+interface AddEditChallengeViewModelFactory {
+    fun create(challenge: Challenge): AddChallengeViewModel
 }

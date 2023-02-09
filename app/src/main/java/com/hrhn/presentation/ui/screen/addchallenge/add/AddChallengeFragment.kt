@@ -14,12 +14,21 @@ import com.hrhn.presentation.util.customGetSerializable
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddChallengeFragment : Fragment() {
     private var _binding: FragmentAddChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val viewModel by viewModels<AddChallengeViewModel>()
+    private val data by lazy {
+        requireArguments().customGetSerializable(KEY_CHALLENGE) as Challenge?
+    }
+
+    @Inject
+    lateinit var addEditChallengeViewModelFactory: AddEditChallengeViewModelFactory
+    private val viewModel: AddChallengeViewModel by viewModels {
+        AddChallengeViewModel.provideFactory(addEditChallengeViewModelFactory, data!!)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
