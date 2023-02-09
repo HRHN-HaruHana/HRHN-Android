@@ -12,6 +12,6 @@
         android:ellipsize="end"
         android:gravity="center"
         android:textColor="@color/cell_label"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 </RelativeLayout>
