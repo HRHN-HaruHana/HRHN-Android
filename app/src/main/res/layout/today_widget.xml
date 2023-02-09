@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_widget"
     style="@style/Widget.HRHN.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +12,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:text="@string/today_widget_description"
+        android:textColor="@color/cell_label"
         android:textSize="12sp"
         android:textStyle="bold" />
 </RelativeLayout>

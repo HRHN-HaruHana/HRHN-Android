@@ -105,7 +105,7 @@ class TodayChallengeWidgetProvider : AppWidgetProvider() {
         val emptyText = context.getString(R.string.today_widget_placeholder)
         val remoteViews = RemoteViews(context.packageName, R.layout.today_widget).apply {
             setTextViewText(R.id.tv_today_challenge, today?.content ?: emptyText)
-            setOnClickPendingIntent(R.id.rl_widget, pendingIntent)
+            setOnClickPendingIntent(R.id.tv_today_challenge, pendingIntent)
         }
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
     }
