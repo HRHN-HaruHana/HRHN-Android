@@ -15,9 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class EditChallengeActivity : AppCompatActivity() {
     private val binding by lazy { ActivityEditChanllengeBinding.inflate(layoutInflater) }
-    private val data: Challenge? by lazy {
-        intent.customGetSerializableExtra(KEY) as Challenge?
-    }
+    private val data: Challenge? by lazy { intent.customGetSerializableExtra(KEY) as Challenge? }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

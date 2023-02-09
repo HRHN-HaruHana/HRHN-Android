@@ -21,9 +21,7 @@ import javax.inject.Inject
 class AddChallengeFragment : Fragment() {
     private var _binding: FragmentAddChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val data by lazy {
-        requireArguments().customGetSerializable(KEY_CHALLENGE) as Challenge?
-    }
+    private val data by lazy { requireArguments().customGetSerializable(KEY_CHALLENGE) as Challenge? }
 
     @Inject
     lateinit var addEditChallengeViewModelFactory: AddEditChallengeViewModelFactory

@@ -1,6 +1,5 @@
 package com.hrhn.presentation.ui.screen.review
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import com.hrhn.R
 import com.hrhn.databinding.FragmentReviewBinding
 import com.hrhn.domain.model.Challenge
 import com.hrhn.presentation.ui.view.CheckEmojiAdapter
+import com.hrhn.presentation.util.customGetSerializable
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,13 +23,7 @@ import javax.inject.Inject
 class ReviewFragment : Fragment() {
     private var _binding: FragmentReviewBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val data by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requireArguments().getSerializable(KEY_CHALLENGE, Challenge::class.java)
-        } else {
-            requireArguments().getSerializable(KEY_CHALLENGE) as Challenge
-        }
-    }
+    private val data by lazy { requireArguments().customGetSerializable(KEY_CHALLENGE) as Challenge? }
 
     @Inject
     lateinit var reviewViewModelFactory: ReviewViewModelFactory
