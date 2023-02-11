@@ -16,7 +16,7 @@ class ChallengeRepositoryImpl @Inject constructor(
     override val challengesFlow: Flow<PagingData<Challenge>>
         get() = challengeDataSource.challengesFlow
 
-    override fun insertChallenge(challenge: Challenge): Result<Unit> {
+    override suspend fun insertChallenge(challenge: Challenge): Result<Unit> {
         return runCatching { challengeDataSource.insertChallenge(challenge) }
     }
 

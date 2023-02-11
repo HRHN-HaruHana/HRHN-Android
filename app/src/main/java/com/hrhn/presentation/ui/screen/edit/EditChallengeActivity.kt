@@ -2,40 +2,29 @@ package com.hrhn.presentation.ui.screen.edit
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.hrhn.presentation.widget.TodayChallengeWidgetProvider
+import androidx.fragment.app.commit
+import com.hrhn.R
 import com.hrhn.databinding.ActivityEditChanllengeBinding
 import com.hrhn.domain.model.Challenge
-import com.hrhn.presentation.util.observeEvent
-import com.hrhn.presentation.util.showToast
+import com.hrhn.presentation.ui.screen.addchallenge.add.AddChallengeFragment
+import com.hrhn.presentation.util.customGetSerializableExtra
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EditChallengeActivity : AppCompatActivity() {
     private val binding by lazy { ActivityEditChanllengeBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<EditChallengeViewModel>()
+    private val data: Challenge? by lazy { intent.customGetSerializableExtra(KEY) as Challenge? }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.lifecycleOwner = this
-        binding.vm = viewModel
-        initData()
         initToolbar()
-        observeData()
-    }
-
-    private fun initData() {
-        val data = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getSerializableExtra(KEY, Challenge::class.java)
-        } else {
-            intent.getSerializableExtra(KEY) as Challenge
-        }
-        if (data != null) {
-            viewModel.setData(data)
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                add(R.id.fcv_edit_challenge, AddChallengeFragment.newInstance(data!!))
+            }
         }
     }
 
@@ -44,16 +33,6 @@ class EditChallengeActivity : AppCompatActivity() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowTitleEnabled(false)
-        }
-    }
-
-    private fun observeData() {
-        viewModel.message.observeEvent(this) {
-            showToast(it)
-        }
-        viewModel.finishEvent.observeEvent(this) {
-            TodayChallengeWidgetProvider.newIntent(this)
-            finish()
         }
     }
 
