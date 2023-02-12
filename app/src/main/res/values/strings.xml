@@ -65,4 +65,6 @@
     <string name="today_widget_title">Challenge of the day</string>
     <string name="today_widget_description">Check challenge of the day</string>
     <string name="today_widget_placeholder">Add challenge of the day!</string>
+    <string name="message_empty_storage">바구니에 챌린지가\n없어요</string>
+    <string name="storage_description">챌린지를 담아두고 매일 편하게 오늘의 챌린지로 등록하세요</string>
 </resources>
