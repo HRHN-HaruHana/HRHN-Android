@@ -7,6 +7,7 @@
     <string name="menu_title_today">Today</string>
     <string name="title_today">Challenge of the Day</string>
     <string name="menu_title_past_challenge">Achievements</string>
+    <string name="menu_title_storage">Storage</string>
     <string name="setting">Settings</string>
     <string name="message_no_challenge">There’s no today’s challenge yet</string>
     <string name="button_add_challenge">Add</string>
