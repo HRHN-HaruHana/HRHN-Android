@@ -49,7 +49,7 @@ class AddChallengeFragment : Fragment() {
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
-            etNewChallenge.requestFocus()
+            etNewChallenge.root.requestFocus()
         }
     }
 

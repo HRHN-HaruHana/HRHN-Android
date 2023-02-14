@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="input"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/et_new_challenge"
+            style="@style/ChallengeInputCard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:importantForAutofill="no"
+            android:text="@={input}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{String.valueOf(input.length())}"
+            android:textColor="@color/cell_label"
+            android:textSize="@dimen/text_size_caption"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_max"
+            app:layout_constraintEnd_toStartOf="@id/tv_max"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/tv_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_default"
+            android:gravity="end"
+            android:text="/50"
+            android:textColor="@color/cell_label"
+            android:textSize="@dimen/text_size_caption"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/et_new_challenge"
+            app:layout_constraintEnd_toEndOf="@id/et_new_challenge" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,53 +21,30 @@
             android:layout_marginHorizontal="@dimen/space_default"
             android:text="@string/message_new_challenge"
             android:textAppearance="@style/HeaderText"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="20dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <include
             android:id="@+id/et_new_challenge"
+            layout="@layout/layout_input_card"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/space_large"
-            android:layout_marginVertical="@dimen/space_default"
-            android:background="@drawable/bg_challenge_card"
-            android:gravity="center"
-            android:hint="@string/hint_for_challenge"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:maxLength="50"
-            android:paddingHorizontal="@dimen/space_large"
-            android:paddingVertical="@dimen/space_default"
-            android:text="@={vm.input}"
-            android:textColor="@color/cell_label"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/space_default"
+            app:layout_constraintBottom_toTopOf="@id/btn_storage"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            bind:input="@={vm.input}" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_storage"
+            style="@style/IconTextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="바구니"
+            app:icon="@drawable/ic_outline_inventory_2_24"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
-
-        <TextView
-            android:id="@+id/tv_length"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:text="@{String.valueOf(vm.input.length())}"
-            android:textColor="@color/cell_label"
-            android:textStyle="bold"
-            app:layout_constraintBaseline_toBaselineOf="@id/tv_max"
-            app:layout_constraintEnd_toStartOf="@id/tv_max"
-            tools:text="3" />
-
-        <TextView
-            android:id="@+id/tv_max"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space_default"
-            android:gravity="end"
-            android:text="/50"
-            android:textColor="@color/cell_label"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/et_new_challenge"
-            app:layout_constraintEnd_toEndOf="@id/et_new_challenge" />
+            app:layout_constraintEnd_toEndOf="@id/et_new_challenge"
+            app:layout_constraintTop_toBottomOf="@id/et_new_challenge" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
