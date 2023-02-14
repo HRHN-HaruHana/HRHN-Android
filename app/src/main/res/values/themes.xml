@@ -47,4 +47,14 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorOnSurface">@color/white</item>
     </style>
+
+    <style name="IconTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/cell_fill</item>
+        <item name="android:textColor">@color/cell_label</item>
+        <item name="android:textSize">@dimen/text_size_body2</item>
+        <item name="android:paddingHorizontal">@dimen/space_default</item>
+        <item name="android:paddingVertical">@dimen/space_small</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="iconTint">@color/cell_label</item>
+    </style>
 </resources>
