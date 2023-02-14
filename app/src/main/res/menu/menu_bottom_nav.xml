@@ -11,6 +11,6 @@
 
     <item
         android:id="@+id/menu_storage"
-        android:icon="@drawable/ic_inventory_2_24"
+        android:icon="@drawable/selector_storage"
         android:title="@string/menu_title_storage" />
 </menu>
