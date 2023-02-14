@@ -48,13 +48,16 @@
         <item name="colorOnSurface">@color/white</item>
     </style>
 
-    <style name="IconTextButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:backgroundTint">@color/cell_fill</item>
+    <style name="ChallengeInputCard" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_challenge_card</item>
+        <item name="android:gravity">center</item>
+        <item name="android:hint">@string/hint_for_challenge</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:maxLength">50</item>
+        <item name="android:paddingHorizontal">@dimen/space_large</item>
+        <item name="android:paddingVertical">@dimen/space_default</item>
         <item name="android:textColor">@color/cell_label</item>
         <item name="android:textSize">@dimen/text_size_body2</item>
-        <item name="android:paddingHorizontal">@dimen/space_default</item>
-        <item name="android:paddingVertical">@dimen/space_small</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="iconTint">@color/cell_label</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
