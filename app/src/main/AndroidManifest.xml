@@ -17,7 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HRHN"
         tools:targetApi="31">
-
+        <activity
+            android:name=".presentation.ui.screen.storage.add.AddStorageActivity"
+            android:exported="false"
+            android:parentActivityName=".presentation.ui.screen.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.ui.screen.review.ReviewActivity"
             android:exported="false"
