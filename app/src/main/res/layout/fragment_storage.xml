@@ -55,7 +55,7 @@
             app:drawableTopCompat="@drawable/ic_folder_off_48" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_past_challenge"
+            android:id="@+id/rv_storages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/space_default"
