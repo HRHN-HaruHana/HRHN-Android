@@ -60,7 +60,7 @@ class StorageFragment : Fragment() {
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun navigateToAddEditStorage(item: StorageItem = StorageItem()) {
+    private fun navigateToAddEditStorage(item: StorageItem? = null) {
         requireContext().startActivity(AddStorageActivity.newIntent(requireContext(), item))
     }
 

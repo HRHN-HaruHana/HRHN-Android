@@ -22,7 +22,7 @@ class AddStorageActivity : AppCompatActivity() {
     @Inject
     lateinit var addEditStorageViewModelFactory: AddEditStorageViewModelFactory
     private val viewModel: AddStorageViewModel by viewModels {
-        AddStorageViewModel.provideFactory(addEditStorageViewModelFactory, data!!)
+        AddStorageViewModel.provideFactory(addEditStorageViewModelFactory, data)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +66,7 @@ class AddStorageActivity : AppCompatActivity() {
     companion object {
         const val KEY = "KEY_STORAGE"
 
-        fun newIntent(context: Context, item: StorageItem = StorageItem()) =
+        fun newIntent(context: Context, item: StorageItem?) =
             Intent(context, AddStorageActivity::class.java).apply {
                 putExtra(KEY, item)
             }

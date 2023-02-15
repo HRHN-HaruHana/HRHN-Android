@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class AddStorageViewModel @AssistedInject constructor(
     private val repository: StorageRepository,
-    @Assisted val storageItem: StorageItem
+    @Assisted val storageItem: StorageItem?
 ) : ViewModel() {
 
     private val _navigateEvent = MutableLiveData<Event<Unit>>()
@@ -21,15 +21,16 @@ class AddStorageViewModel @AssistedInject constructor(
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> get() = _message
 
-    val input = MutableLiveData<String>(storageItem.content)
+    val input = MutableLiveData<String>(storageItem?.content ?: "")
     val nextEnabled: LiveData<Boolean> = Transformations.map(input) {
         it.length in (2..50)
     }
 
     fun saveStorageItem() {
         val content = requireNotNull(input.value)
+        val item = storageItem?.copy(content = content) ?: StorageItem(content = content)
         viewModelScope.launch {
-            repository.insertStorageItem(storageItem.copy(content = content))
+            repository.insertStorageItem(item)
                 .onSuccess {
                     _navigateEvent.emit()
                 }
@@ -42,7 +43,7 @@ class AddStorageViewModel @AssistedInject constructor(
     companion object {
         fun provideFactory(
             assistedFactory: AddEditStorageViewModelFactory,
-            storageItem: StorageItem
+            storageItem: StorageItem?
         ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -54,5 +55,5 @@ class AddStorageViewModel @AssistedInject constructor(
 
 @AssistedFactory
 interface AddEditStorageViewModelFactory {
-    fun create(item: StorageItem): AddStorageViewModel
+    fun create(item: StorageItem?): AddStorageViewModel
 }
