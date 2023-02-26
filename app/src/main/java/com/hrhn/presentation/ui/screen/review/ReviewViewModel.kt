@@ -7,15 +7,15 @@ import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.ui.view.CheckableEmoji
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ReviewViewModel @AssistedInject constructor(
-    private val repository: ChallengeRepository,
-    @Assisted val challenge: Challenge
+@HiltViewModel
+class ReviewViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val repository: ChallengeRepository
 ) : ViewModel() {
 
     private val _finishEvent = MutableLiveData<Event<Unit>>()
@@ -25,6 +25,8 @@ class ReviewViewModel @AssistedInject constructor(
     val message: LiveData<Event<String>> get() = _message
 
     private val _selected = MutableLiveData<Emoji?>()
+
+    val challenge: Challenge get() = savedStateHandle[KEY_CHALLENGE] ?: Challenge()
 
     private val _emojis = MutableLiveData(
         Emoji.values().map { CheckableEmoji(emoji = it, isChecked = challenge.emoji == it) }
@@ -48,19 +50,6 @@ class ReviewViewModel @AssistedInject constructor(
     }
 
     companion object {
-        fun provideFactory(
-            assistedFactory: ReviewViewModelFactory,
-            challenge: Challenge
-        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return assistedFactory.create(challenge) as T
-            }
-        }
+        private const val KEY_CHALLENGE = "challenge"
     }
-}
-
-@AssistedFactory
-interface ReviewViewModelFactory {
-    fun create(challenge: Challenge): ReviewViewModel
 }

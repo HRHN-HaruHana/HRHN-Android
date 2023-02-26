@@ -10,24 +10,16 @@ import androidx.fragment.app.viewModels
 import com.hrhn.R
 import com.hrhn.databinding.FragmentAddChallengeBinding
 import com.hrhn.domain.model.Challenge
-import com.hrhn.presentation.util.customGetSerializable
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import com.hrhn.presentation.widget.TodayChallengeWidgetProvider
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddChallengeFragment : Fragment() {
     private var _binding: FragmentAddChallengeBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val data by lazy { requireArguments().customGetSerializable(KEY_CHALLENGE) as Challenge? }
-
-    @Inject
-    lateinit var addEditChallengeViewModelFactory: AddEditChallengeViewModelFactory
-    private val viewModel: AddChallengeViewModel by viewModels {
-        AddChallengeViewModel.provideFactory(addEditChallengeViewModelFactory, data!!)
-    }
+    private val viewModel: AddChallengeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
