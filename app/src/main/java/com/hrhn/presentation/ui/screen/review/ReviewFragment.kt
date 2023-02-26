@@ -13,23 +13,15 @@ import com.hrhn.R
 import com.hrhn.databinding.FragmentReviewBinding
 import com.hrhn.domain.model.Challenge
 import com.hrhn.presentation.ui.view.CheckEmojiAdapter
-import com.hrhn.presentation.util.customGetSerializable
 import com.hrhn.presentation.util.observeEvent
 import com.hrhn.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReviewFragment : Fragment() {
     private var _binding: FragmentReviewBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val data by lazy { requireArguments().customGetSerializable(KEY_CHALLENGE) as Challenge? }
-
-    @Inject
-    lateinit var reviewViewModelFactory: ReviewViewModelFactory
-    private val viewModel: ReviewViewModel by viewModels {
-        ReviewViewModel.provideFactory(reviewViewModelFactory, data!!)
-    }
+    private val viewModel: ReviewViewModel by viewModels()
     private val adapter by lazy { CheckEmojiAdapter { viewModel.checkedChanged(it) } }
 
     override fun onCreateView(

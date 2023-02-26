@@ -5,20 +5,22 @@ import com.hrhn.domain.model.Challenge
 import com.hrhn.domain.repository.ChallengeRepository
 import com.hrhn.presentation.util.Event
 import com.hrhn.presentation.util.emit
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddChallengeViewModel @AssistedInject constructor(
-    private val repository: ChallengeRepository,
-    @Assisted val challenge: Challenge
+@HiltViewModel
+class AddChallengeViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val repository: ChallengeRepository
 ) : ViewModel() {
     private val _navigateEvent = MutableLiveData<Event<Unit>>()
     val navigateEvent: LiveData<Event<Unit>> get() = _navigateEvent
 
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> get() = _message
+
+    val challenge: Challenge get() = savedStateHandle[KEY_CHALLENGE] ?: Challenge()
 
     val input = MutableLiveData<String>(challenge.content)
     val nextEnabled: LiveData<Boolean> = Transformations.map(input) {
@@ -39,19 +41,6 @@ class AddChallengeViewModel @AssistedInject constructor(
     }
 
     companion object {
-        fun provideFactory(
-            assistedFactory: AddEditChallengeViewModelFactory,
-            challenge: Challenge
-        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return assistedFactory.create(challenge) as T
-            }
-        }
+        private const val KEY_CHALLENGE = "challenge"
     }
-}
-
-@AssistedFactory
-interface AddEditChallengeViewModelFactory {
-    fun create(challenge: Challenge): AddChallengeViewModel
 }
